@@ -5,5 +5,5 @@ export interface Spirit {
   id: SpiritId
   name: string
   description: string
-  track: Track
+  tracks: Track[]
 }

@@ -1,27 +1,42 @@
 import { ref, type Ref } from 'vue'
 import { defineStore } from 'pinia'
-import type { SpiritId } from '@/spirit'
+import type { Spirit, SpiritId } from '@/spirit'
+import { SPIRITS } from '@/spirit_definition'
 
 export const useCapturedSpirits = defineStore(
   'capturedSpirits',
   () => {
-    const spiritIds: Ref<SpiritId[]> = ref([])
+    const spiritCaptureIndices: Ref<{ [key: SpiritId]: number }> = ref({})
 
     function captureSpirit(id: SpiritId) {
-      if (!isCaptured(id)) {
-        spiritIds.value.push(id)
+      const capturedIndex = getCaptureIndex(id)
+
+      if (capturedIndex === undefined) {
+        spiritCaptureIndices.value[id] = 1
+      } else {
+        spiritCaptureIndices.value[id] = capturedIndex + 1
       }
     }
 
+    function getCaptureIndex(id: SpiritId): number {
+      return spiritCaptureIndices.value[id] || 0
+    }
+
     function resetSpirit(id: SpiritId) {
-      spiritIds.value = spiritIds.value.filter((spiritId) => spiritId !== id)
+      spiritCaptureIndices.value[id] = 0
     }
 
     function isCaptured(id: SpiritId): boolean {
-      return spiritIds.value.includes(id)
+      const spirit: Spirit | undefined = SPIRITS[id]
+
+      const capturedIndex = getCaptureIndex(id)
+
+      return (
+        typeof spirit === 'object' && spirit !== undefined && capturedIndex >= spirit.tracks.length
+      )
     }
 
-    return { spiritIds, captureSpirit, isCaptured, resetSpirit }
+    return { spiritCaptureIndices, captureSpirit, isCaptured, resetSpirit, getCaptureIndex }
   },
   {
     persist: true,
