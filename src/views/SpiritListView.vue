@@ -5,12 +5,10 @@ import Column from 'primevue/column'
 import Button from 'primevue/button'
 import Avatar from 'primevue/avatar'
 import Tag from 'primevue/tag'
-import { SPIRITS } from '@/definition'
-import type { Spirit } from '@/spirit'
-import type { Ref } from 'vue'
+import { SPIRITS } from '@/spirit_definition'
 import { useCapturedSpirits } from '@/stores/capturedSpirits'
 
-const spirits: Ref<Spirit[]> = ref([...Object.values(SPIRITS)])
+const spirits = ref([...Object.values(SPIRITS)])
 
 const capturedSpiritsStore = useCapturedSpirits()
 const base = import.meta.env.BASE_URL
