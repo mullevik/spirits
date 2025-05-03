@@ -1,21 +1,11 @@
 <template>
   <Panel>
-    <div class="flex justify-center gap-2">
-      <div class="w-14">
-        <Avatar
-          :image="`${base}spirits/${spiritId}.png`"
-          class="mr-2"
-          size="large"
-          shape="circle"
-        />
-      </div>
-      <div>
-        <p>Tracking:</p>
-        <RouterLink :to="{ name: 'spirit', params: { spiritId: spiritId } }">
-          <p class="font-bold">{{ spirit.name }}</p>
-        </RouterLink>
-      </div>
-    </div>
+    <SpiritTarget
+      :spiritId="spirit.id"
+      :spiritName="spirit.name"
+      :index="captureIndex"
+      :max="spirit.tracks.length"
+    />
 
     <Divider />
 
@@ -44,11 +34,11 @@ import Panel from 'primevue/panel'
 import ConfirmDialog from 'primevue/confirmdialog'
 import SignalStrengthBar from './SignalStrengthBar.vue'
 import CompassWheel from './CompassWheel.vue'
-import Avatar from 'primevue/avatar'
+import SpiritTarget from './SpiritTarget.vue'
 import ChargeBar from './ChargeBar.vue'
 import Divider from 'primevue/divider'
 import Button from 'primevue/button'
-import { ref, type Ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, watch, type Ref, onMounted, onBeforeUnmount } from 'vue'
 import { headingDistanceTo, type LatLon } from 'geolocation-utils'
 import { setupOrientation, setupLocation } from '@/sensors'
 import { useCapturedSpirits } from '@/stores/capturedSpirits'
@@ -61,7 +51,6 @@ import { defineProps } from 'vue'
 import { useRouter } from 'vue-router'
 
 let _timer: NodeJS.Timeout | null = null
-const base = import.meta.env.BASE_URL
 
 const UPDATE_INTERVAL = 1000
 const REQUIRED_SIGNAL_STRENGTH = 50
@@ -87,17 +76,32 @@ const lastPosition: Ref<LatLon | null> = ref(null)
 
 const capturedStore = useCapturedSpirits()
 
+const getLimitedCaptureIndex = () => {
+  return Math.min(capturedStore.getCaptureIndex(props.spiritId), spirit.tracks.length - 1)
+}
+const captureIndex = ref(getLimitedCaptureIndex())
+watch(capturedStore.spiritCaptureIndices, () => {
+  captureIndex.value = getLimitedCaptureIndex()
+})
+
 const increaseCharge = () => {
-  charge.value = Math.min(MAX_CHARGE, charge.value + spirit.track.getChargePerSecond())
+  charge.value = Math.min(
+    MAX_CHARGE,
+    charge.value + spirit.tracks[captureIndex.value].getChargePerSecond(),
+  )
   if (charge.value >= MAX_CHARGE) {
     console.log('Spirit captured!')
     capturedStore.captureSpirit(props.spiritId)
-    capture()
+    charge.value = MIN_CHARGE
+    showCaptureMessage()
   }
 }
 
 const decreaseCharge = () => {
-  charge.value = Math.max(MIN_CHARGE, charge.value - 2 * spirit.track.getChargePerSecond())
+  charge.value = Math.max(
+    MIN_CHARGE,
+    charge.value - 2 * spirit.tracks[captureIndex.value].getChargePerSecond(),
+  )
 }
 
 const onGameTick = () => {
@@ -109,11 +113,11 @@ const onGameTick = () => {
 
   let newSignalStrength = 0
   if (lastPosition.value) {
-    const goal = spirit.track.targetAt(new Date())
+    const goal = spirit.tracks[captureIndex.value].targetAt(new Date())
     const headingDistance = headingDistanceTo(lastPosition.value, goal)
     newSignalStrength = getSignalStrength(
       headingDistance.distance,
-      spirit.track.getMaxAllowedDistance(),
+      spirit.tracks[captureIndex.value].getMaxAllowedDistance(),
     )
     bearing.value = headingDistance.heading
   } else {
@@ -125,14 +129,16 @@ const onGameTick = () => {
   }
 }
 
-const capture = () => {
+const showCaptureMessage = () => {
   confirmCapture.require({
     message: 'Spirit captured',
     header: 'Captured!',
     icon: 'pi pi-check-circle',
     position: 'bottom',
     accept: () => {
-      router.back()
+      if (capturedStore.isCaptured(props.spiritId)) {
+        router.back()
+      }
     },
   })
 }

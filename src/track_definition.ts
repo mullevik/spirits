@@ -6,8 +6,22 @@ export const ECOBUNNY_TRACK = new Track(
     { position: { lat: 50.058621, lon: 14.431561 }, timeToReachNext: 180 },
   ],
   new Date(1739612690546),
-  60,
+  1,
   30,
+)
+
+export const CONTAINER_0 = new Track(
+  [{ position: { lat: 50.0589978, lon: 14.432535 }, timeToReachNext: 10 }],
+  new Date(1739612690546),
+  3,
+  10,
+)
+
+export const CONTAINER_1 = new Track(
+  [{ position: { lat: 50.0586344, lon: 14.42933 }, timeToReachNext: 10 }],
+  new Date(1739612690546),
+  3,
+  10,
 )
 
 export const ROOSTRIDER_TRACK = new Track(
