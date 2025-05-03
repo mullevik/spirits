@@ -6,6 +6,8 @@ export const ECOBUNNY_TRACK = new Track(
     { position: { lat: 50.058621, lon: 14.431561 }, timeToReachNext: 180 },
   ],
   new Date(1739612690546),
+  60,
+  30,
 )
 
 export const ROOSTRIDER_TRACK = new Track(
@@ -117,4 +119,6 @@ export const ROOSTRIDER_TRACK = new Track(
     { position: { lat: 50.05033, lon: 14.420025 }, timeToReachNext: 5 },
   ],
   new Date(1739612690546),
+  60 * 6,
+  30,
 )

@@ -8,14 +8,20 @@ export const useCapturedSpirits = defineStore(
     const spiritIds: Ref<SpiritId[]> = ref([])
 
     function captureSpirit(id: SpiritId) {
-      spiritIds.value.push(id)
+      if (!isCaptured(id)) {
+        spiritIds.value.push(id)
+      }
+    }
+
+    function resetSpirit(id: SpiritId) {
+      spiritIds.value = spiritIds.value.filter((spiritId) => spiritId !== id)
     }
 
     function isCaptured(id: SpiritId): boolean {
       return spiritIds.value.includes(id)
     }
 
-    return { spiritIds, captureSpirit, isCaptured }
+    return { spiritIds, captureSpirit, isCaptured, resetSpirit }
   },
   {
     persist: true,

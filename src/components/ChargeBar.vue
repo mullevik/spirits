@@ -1,16 +1,23 @@
 <template>
   <div class="container">
     <p>
-      Charge: {{ `${Math.floor(charge)}` }}/100
-      <!-- <span v-if="isCharging">▲</span>
-      <span v-else-if="isDischarging">▼</span> -->
+      <i class="pi pi-bolt"></i> Charge: {{ `${charge.toFixed(1)}` }} %
+      <!-- <span v-if="isCharging"><i class="pi pi-bolt"></i></span> -->
+      <!-- <span v-else-if="isDischarging">▼</span> -->
     </p>
-    <progress max="100" :value="charge" :class="`${isDischarging ? 'discharge' : 'charge'}`" />
+    <ProgressBar
+      :value="charge"
+      :showValue="false"
+      :class="`${isDischarging ? 'warn' : ''}`"
+      max="100"
+    >
+    </ProgressBar>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { defineProps, toRefs, watch, ref } from 'vue'
+import ProgressBar from 'primevue/progressbar'
 
 const props = defineProps({
   charge: {
@@ -29,6 +36,10 @@ watch(charge, (newVal, oldVal) => {
 </script>
 
 <style>
+div.warn div.p-progressbar-value {
+  background: var(--p-red-500);
+}
+
 progress.discharge::-webkit-progress-value {
   background-color: rgb(240, 96, 72);
 }

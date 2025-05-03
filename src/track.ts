@@ -1,8 +1,11 @@
 import { headingDistanceTo, moveTo, type LatLon } from 'geolocation-utils'
 
-type Seconds = number
-type Milliseconds = number
-type Meters = number
+export type Seconds = number
+export type Milliseconds = number
+export type Meters = number
+
+export const MAX_CHARGE: number = 100
+export const MIN_CHARGE: number = 0
 
 export interface TrackPoint {
   position: LatLon
@@ -12,13 +15,30 @@ export interface TrackPoint {
 export class Track {
   private pts: TrackPoint[]
   private beginAt: Date
+  private captureDuration: Seconds
+  private maxAllowedDistance: Meters
 
-  constructor(pts: TrackPoint[], beginAt: Date) {
+  constructor(
+    pts: TrackPoint[],
+    beginAt: Date,
+    captureDuration: Seconds,
+    maxAllowedDistance: Meters,
+  ) {
     if (pts.length < 1) {
       throw Error('Track must have at least 1 TrackPoint')
     }
     this.pts = pts
     this.beginAt = beginAt
+    this.captureDuration = captureDuration
+    this.maxAllowedDistance = maxAllowedDistance
+  }
+
+  public getMaxAllowedDistance(): Meters {
+    return this.maxAllowedDistance
+  }
+
+  public getChargePerSecond(): number {
+    return MAX_CHARGE / this.captureDuration
   }
 
   public getBeginDate(): Date {
@@ -53,7 +73,6 @@ export class Track {
 }
 
 const SIGNAL_STRENGTH_M: number = 100
-const SIGNAL_STRENGTH_T: Meters = 30
 export const REQUIRED_SIGNAL_STRENGTH: number = 50
 
 // Computes signal-strength based on distance to target
@@ -64,8 +83,8 @@ export const REQUIRED_SIGNAL_STRENGTH: number = 50
 //  - `t` is the distance at which the function reaches half of `m`
 //
 // This function converges to 0 at positive infinity. The further the distance, the lower the value.
-export function signalStrength(distance: Meters): number {
-  return SIGNAL_STRENGTH_M / (distance / SIGNAL_STRENGTH_T + 1)
+export function getSignalStrength(distance: Meters, t: number): number {
+  return SIGNAL_STRENGTH_M / (distance / t + 1)
 }
 
 export function interpolate(a: LatLon, b: LatLon, percentFromAToB: number) {

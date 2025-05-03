@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
-import { SPIRITS } from '@/definition'
+import { defineProps, ref } from 'vue'
+import { SPIRITS } from '@/spirit_definition'
 import Card from 'primevue/card'
 import Button from 'primevue/button'
 import Toolbar from 'primevue/toolbar'
+import Divider from 'primevue/divider'
 import Image from 'primevue/image'
 import type { Spirit } from '@/spirit'
-
 import { useCapturedSpirits } from '@/stores/capturedSpirits'
 
 const props = defineProps({
@@ -18,11 +18,14 @@ const props = defineProps({
 
 const spirit: Spirit = SPIRITS[props.spiritId]
 
-const capturedStore = useCapturedSpirits()
+const capturedSpirits = useCapturedSpirits()
+const isCaptured = ref(capturedSpirits.isCaptured(spirit.id))
 
-const captureSpirit = () => {
-  capturedStore.captureSpirit(props.spiritId)
+const resetSpirit = () => {
+  capturedSpirits.resetSpirit(spirit.id)
+  isCaptured.value = capturedSpirits.isCaptured(spirit.id)
 }
+
 const base = import.meta.env.BASE_URL
 </script>
 
@@ -40,7 +43,9 @@ const base = import.meta.env.BASE_URL
       </template>
 
       <template #end>
-        <Button icon="pi pi-play-circle" @click="captureSpirit" />
+        <RouterLink :to="{ name: 'capture', params: { spiritId: props.spiritId } }">
+          <Button icon="pi pi-compass" :disabled="isCaptured"></Button>
+        </RouterLink>
       </template>
     </Toolbar>
     <div class="flex justify-center flex-row">
@@ -62,6 +67,17 @@ const base = import.meta.env.BASE_URL
           </p>
         </template>
       </Card>
+    </div>
+
+    <Divider />
+
+    <div v-if="isCaptured">
+      <Button icon="pi pi-trash" label="Reset" severity="danger" @click="resetSpirit"></Button>
+    </div>
+    <div v-else>
+      <RouterLink :to="{ name: 'capture', params: { spiritId: props.spiritId } }">
+        <Button icon="pi pi-compass" label="Capture"></Button>
+      </RouterLink>
     </div>
   </main>
 </template>

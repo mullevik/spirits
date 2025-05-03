@@ -1,9 +1,11 @@
 import { expect, test } from 'vitest'
-import { interpolate, getSignalStrength, Track } from './track'
+import { interpolate, getSignalStrength, Track, type Seconds, type Meters } from './track'
 import { moveTo, distanceTo } from 'geolocation-utils'
 
 export const POINT_A = { lat: 50.061495, lon: 14.425202 } // Prague: near Vysehrad
 export const POINT_B = { lat: 50.058621, lon: 14.431561 } // Prague: near Prazskeho Povstani
+const MAX_DISTANCE: Meters = 30
+const CAPTURE_DURATION: Seconds = 60
 
 export const SMALL_TRACK = new Track(
   [
@@ -11,6 +13,8 @@ export const SMALL_TRACK = new Track(
     { position: POINT_B, timeToReachNext: 60 },
   ],
   new Date(1739612690546),
+  CAPTURE_DURATION,
+  MAX_DISTANCE,
 )
 
 test('signal strength decreases with time when stationary', () => {
@@ -19,27 +23,29 @@ test('signal strength decreases with time when stationary', () => {
   const after5Seconds = new Date(beginDate.getTime() + 5 * 1000)
   const after10Seconds = new Date(beginDate.getTime() + 10 * 1000)
   const after15Seconds = new Date(beginDate.getTime() + 15 * 1000)
-  expect(getSignalStrength(distanceTo(POINT_A, SMALL_TRACK.targetAt(beginDate)))).toBe(100)
-  expect(getSignalStrength(distanceTo(POINT_A, SMALL_TRACK.targetAt(after5Seconds)))).toBeLessThan(
-    100,
-  )
-  expect(getSignalStrength(distanceTo(POINT_A, SMALL_TRACK.targetAt(after10Seconds)))).toBeLessThan(
-    50,
-  )
-  expect(getSignalStrength(distanceTo(POINT_A, SMALL_TRACK.targetAt(after15Seconds)))).toBeLessThan(
-    20,
-  )
+  expect(
+    getSignalStrength(distanceTo(POINT_A, SMALL_TRACK.targetAt(beginDate)), MAX_DISTANCE),
+  ).toBe(100)
+  expect(
+    getSignalStrength(distanceTo(POINT_A, SMALL_TRACK.targetAt(after5Seconds)), MAX_DISTANCE),
+  ).toBeLessThan(100)
+  expect(
+    getSignalStrength(distanceTo(POINT_A, SMALL_TRACK.targetAt(after10Seconds)), MAX_DISTANCE),
+  ).toBeLessThan(50)
+  expect(
+    getSignalStrength(distanceTo(POINT_A, SMALL_TRACK.targetAt(after15Seconds)), MAX_DISTANCE),
+  ).toBeLessThan(20)
 })
 
 test('signal strength', () => {
   const closeToPointA = moveTo(POINT_A, { distance: 30, heading: 45 })
 
-  expect(getSignalStrength(0)).toBe(100)
-  expect(getSignalStrength(5000)).toBeLessThan(1)
+  expect(getSignalStrength(0, MAX_DISTANCE)).toBe(100)
+  expect(getSignalStrength(5000, MAX_DISTANCE)).toBeLessThan(1)
 
-  expect(getSignalStrength(distanceTo(POINT_A, POINT_A))).toBe(100)
-  expect(getSignalStrength(distanceTo(POINT_A, POINT_B))).toBeLessThan(6)
-  expect(getSignalStrength(distanceTo(POINT_A, closeToPointA))).toBeCloseTo(50)
+  expect(getSignalStrength(distanceTo(POINT_A, POINT_A), MAX_DISTANCE)).toBe(100)
+  expect(getSignalStrength(distanceTo(POINT_A, POINT_B), MAX_DISTANCE)).toBeLessThan(6)
+  expect(getSignalStrength(distanceTo(POINT_A, closeToPointA), MAX_DISTANCE)).toBeCloseTo(50)
 })
 
 test('track duration is a sum of all timeToReach values', () => {

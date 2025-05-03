@@ -5,6 +5,7 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import PrimeVue from 'primevue/config'
 import Aura from '@primeuix/themes/aura'
+import ConfirmationService from 'primevue/confirmationservice'
 
 import App from './App.vue'
 import router from './router'
@@ -13,7 +14,6 @@ import { definePreset } from '@primeuix/themes'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
 const app = createApp(App)
-
 const SpiritAppPreset = definePreset(Aura, {
   semantic: {
     primary: {
@@ -45,5 +45,6 @@ app.use(PrimeVue, {
   },
 })
 app.use(router)
+app.use(ConfirmationService)
 
 app.mount('#app')
