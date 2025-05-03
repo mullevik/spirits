@@ -1,7 +1,7 @@
 <template>
   <Panel>
-    <div class="p-component flex">
-      <div class="w-4">
+    <div class="flex justify-center gap-2">
+      <div class="w-14">
         <Avatar
           :image="`${base}spirits/${spiritId}.png`"
           class="mr-2"
@@ -9,12 +9,10 @@
           shape="circle"
         />
       </div>
-      <div class="w-4">
-        <span class="text-lg">{{ spirit.name }}</span>
-      </div>
-      <div class="w-4">
+      <div>
+        <p>Tracking:</p>
         <RouterLink :to="{ name: 'spirit', params: { spiritId: spiritId } }">
-          <span class="text-lg"><i class="pi pi-graduation-cap"></i> About</span>
+          <p class="font-bold">{{ spirit.name }}</p>
         </RouterLink>
       </div>
     </div>
@@ -156,6 +154,7 @@ onMounted(() => {
   ) // Initialize the spirit tracker
   setupLocation(
     (e: GeolocationPosition) => {
+      console.log('got location', e)
       lastPosition.value = {
         lat: e.coords.latitude,
         lon: e.coords.longitude,

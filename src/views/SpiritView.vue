@@ -44,52 +44,50 @@ const base = import.meta.env.BASE_URL
 
       <template #end>
         <RouterLink :to="{ name: 'capture', params: { spiritId: props.spiritId } }">
-          <Button icon="pi pi-compass" :disabled="isCaptured"></Button>
+          <Button icon="pi pi-compass" label="Track" :disabled="isCaptured"></Button>
         </RouterLink>
       </template>
     </Toolbar>
-    <div class="flex justify-center flex-row">
-      <div class="w-24">
+
+    <div class="flex justify-center">
+      <div class="w-md m-3">
         <Image
           :src="`${base}spirits/${spirit.id}.png`"
           :alt="spirit.name"
-          width="250"
           class="rounded"
+          width="100%"
         />
       </div>
     </div>
 
-    <div class="flex">
-      <Card>
+    <div class="flex justify-center">
+      <Card class="w-lg">
+        <template #title>
+          <h3>About {{ spirit.name }}</h3>
+        </template>
+
         <template #content>
-          <p class="m-0">
-            {{ spirit.description }}
-          </p>
+          <p>{{ spirit.description }}</p>
+
+          <Divider />
+
+          <div class="flex justify-center">
+            <div v-if="isCaptured">
+              <Button
+                icon="pi pi-trash"
+                label="Reset"
+                severity="danger"
+                @click="resetSpirit"
+              ></Button>
+            </div>
+            <div v-else>
+              <RouterLink :to="{ name: 'capture', params: { spiritId: props.spiritId } }">
+                <Button icon="pi pi-compass" label="Track"></Button>
+              </RouterLink>
+            </div>
+          </div>
         </template>
       </Card>
-    </div>
-
-    <Divider />
-
-    <div v-if="isCaptured">
-      <Button icon="pi pi-trash" label="Reset" severity="danger" @click="resetSpirit"></Button>
-    </div>
-    <div v-else>
-      <RouterLink :to="{ name: 'capture', params: { spiritId: props.spiritId } }">
-        <Button icon="pi pi-compass" label="Capture"></Button>
-      </RouterLink>
-    </div>
-
-    <div class="card flex flex-col items-center gap-4">
-      <div class="flex flex-wrap gap-4 justify-center">
-        <Button icon="pi pi-home" aria-label="Save" />
-        <Button label="Profile" icon="pi pi-user" />
-        <Button label="Save" icon="pi pi-check" iconPos="right" />
-      </div>
-      <div class="flex flex-wrap gap-4 justify-center">
-        <Button label="Search" icon="pi pi-search" iconPos="top" />
-        <Button label="Update" icon="pi pi-refresh" iconPos="bottom" />
-      </div>
     </div>
   </main>
 </template>
