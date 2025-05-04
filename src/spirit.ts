@@ -1,3 +1,4 @@
+import { type LatLon } from 'geolocation-utils'
 import type { Track } from './track'
 
 export type SpiritId = string
@@ -7,4 +8,5 @@ export interface Spirit {
   kind: string
   difficulty: number
   tracks: Track[]
+  area: LatLon[]
 }

@@ -20,7 +20,9 @@
   "dependencies": {
     "@primeuix/themes": "^1.0.3",
     "@tailwindcss/postcss": "^4.1.5",
+    "@vue-leaflet/vue-leaflet": "^0.5.0",
     "geolocation-utils": "^1.2.6",
+    "leaflet": "^1.9.4",
     "pinia": "^3.0.1",
     "pinia-plugin-persistedstate": "^4.2.0",
     "primeicons": "^7.0.0",

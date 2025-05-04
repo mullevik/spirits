@@ -60,9 +60,14 @@ const base = import.meta.env.BASE_URL
       </template>
 
       <template #end>
-        <RouterLink :to="{ name: 'capture', params: { spiritId: props.spiritId } }">
-          <Button icon="pi pi-compass" label="Track" :disabled="isCaptured"></Button>
-        </RouterLink>
+        <div class="flex gap-2">
+          <RouterLink :to="{ name: 'map', params: { spiritId: props.spiritId } }">
+            <Button icon="pi pi-map" label="Map" severity="secondary"></Button>
+          </RouterLink>
+          <RouterLink :to="{ name: 'capture', params: { spiritId: props.spiritId } }">
+            <Button icon="pi pi-compass" label="Track" :disabled="isCaptured"></Button>
+          </RouterLink>
+        </div>
       </template>
     </Toolbar>
 

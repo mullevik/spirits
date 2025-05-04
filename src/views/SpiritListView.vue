@@ -54,7 +54,7 @@ const items = Object.values(spirits.value).map((spirit) => {
       <Column style="width: 15%">
         <template #body="slotProps">
           <RouterLink :to="{ name: 'spirit', params: { spiritId: slotProps.data.id } }">
-            <Button icon="pi pi-search" type="button" class="p-button-text"></Button>
+            <Button icon="pi pi-search" type="button" severity="secondary"></Button>
           </RouterLink>
         </template>
       </Column>
