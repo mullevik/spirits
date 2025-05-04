@@ -5,5 +5,6 @@ export interface Spirit {
   id: SpiritId
   name: string
   kind: string
+  difficulty: number
   tracks: Track[]
 }

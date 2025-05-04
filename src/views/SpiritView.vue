@@ -11,6 +11,7 @@ import { useCapturedSpirits } from '@/stores/capturedSpirits'
 import SpiritCheckpoints from '@/components/SpiritCheckpoints.vue'
 import RoostriderDescription from '@/components/spirits/RoostriderDescription.vue'
 import EcoBunnyDescription from '@/components/spirits/EcoBunnyDescription.vue'
+import DifficultyStars from '@/components/DifficultyStars.vue'
 
 const props = defineProps({
   spiritId: {
@@ -88,11 +89,19 @@ const base = import.meta.env.BASE_URL
 
           <Divider />
           <div class="flex flex-col gap-3">
-            <SpiritCheckpoints
-              :index="currentIndex"
-              :max="spirit.tracks.length"
-              :showCurrent="false"
-            />
+            <div class="flex flex-row items-baseline">
+              <span class="mr-2">Difficulty:</span>
+              <DifficultyStars :difficulty="spirit.difficulty" />
+            </div>
+            <div class="flex flex-row items-baseline" v-if="spirit.tracks.length > 1">
+              <span class="mr-2">Parts:</span>
+
+              <SpiritCheckpoints
+                :index="currentIndex"
+                :max="spirit.tracks.length"
+                :showCurrent="false"
+              />
+            </div>
 
             <div class="flex justify-center">
               <div v-if="isCaptured">
