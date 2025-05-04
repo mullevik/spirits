@@ -16,6 +16,7 @@ export const useCapturedSpirits = defineStore(
       } else {
         spiritCaptureIndices.value[id] = capturedIndex + 1
       }
+      spiritCaptureIndices.value = spiritCaptureIndices.value
     }
 
     function getCaptureIndex(id: SpiritId): number {

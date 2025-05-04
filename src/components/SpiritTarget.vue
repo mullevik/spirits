@@ -1,28 +1,26 @@
 <template>
-  <div class="flex justify-center gap-2">
-    <div class="w-14">
-      <Avatar :image="`${base}spirits/${spiritId}.png`" class="mr-2" size="large" shape="circle" />
-    </div>
-    <div>
-      <p>Tracking:</p>
-      <RouterLink :to="{ name: 'spirit', params: { spiritId: spiritId } }">
+  <div class="flex flex-col">
+    <div class="flex flex-row justify-center gap-2">
+      <div class="w-14">
+        <Avatar
+          :image="`${base}spirits/${spiritId}.png`"
+          class="mr-2"
+          size="large"
+          shape="circle"
+        />
+      </div>
+      <div>
+        <p>Tracking:</p>
         <p class="font-bold">{{ spiritName }}</p>
-      </RouterLink>
-      <div v-if="max > 1" class="flex gap-1">
-        <Badge
-          v-for="i in max"
-          :key="i"
-          :value="i"
-          :severity="index >= i ? 'success' : 'secondary'"
-        ></Badge>
       </div>
     </div>
+    <SpiritCheckpoints :index="index" :max="max" :showCurrent="true" />
   </div>
 </template>
 
 <script setup lang="ts">
 import Avatar from 'primevue/avatar'
-import Badge from 'primevue/badge'
+import SpiritCheckpoints from './SpiritCheckpoints.vue'
 
 const base = import.meta.env.BASE_URL
 defineProps({

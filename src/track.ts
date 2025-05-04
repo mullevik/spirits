@@ -7,6 +7,8 @@ export type Meters = number
 export const MAX_CHARGE: number = 100
 export const MIN_CHARGE: number = 0
 
+export const DEFAULT_BEGIN_DATE = new Date(1739612690546)
+
 export interface TrackPoint {
   position: LatLon
   timeToReachNext: Seconds
@@ -17,12 +19,22 @@ export class Track {
   private beginAt: Date
   private captureDuration: Seconds
   private maxAllowedDistance: Meters
+  public isActive: (dt: Date) => boolean
 
   constructor(
     pts: TrackPoint[],
-    beginAt: Date,
-    captureDuration: Seconds,
-    maxAllowedDistance: Meters,
+    {
+      beginAt = DEFAULT_BEGIN_DATE,
+      captureDuration = 60,
+      maxAllowedDistance = 30,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      isActive = (dt: Date): boolean => true,
+    }: {
+      beginAt?: Date
+      captureDuration?: Seconds
+      maxAllowedDistance?: Meters
+      isActive?: (dt: Date) => boolean
+    },
   ) {
     if (pts.length < 1) {
       throw Error('Track must have at least 1 TrackPoint')
@@ -31,6 +43,7 @@ export class Track {
     this.beginAt = beginAt
     this.captureDuration = captureDuration
     this.maxAllowedDistance = maxAllowedDistance
+    this.isActive = isActive
   }
 
   public getMaxAllowedDistance(): Meters {
