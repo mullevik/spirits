@@ -1,27 +1,13 @@
 import { Track } from './track'
 
-export const ECOBUNNY_TRACK = new Track(
-  [
-    { position: { lat: 50.061495, lon: 14.425202 }, timeToReachNext: 180 },
-    { position: { lat: 50.058621, lon: 14.431561 }, timeToReachNext: 180 },
-  ],
-  new Date(1739612690546),
-  1,
-  30,
-)
-
 export const CONTAINER_0 = new Track(
   [{ position: { lat: 50.0589978, lon: 14.432535 }, timeToReachNext: 10 }],
-  new Date(1739612690546),
-  3,
-  10,
+  { maxAllowedDistance: 10, captureDuration: 3 },
 )
 
 export const CONTAINER_1 = new Track(
   [{ position: { lat: 50.0586344, lon: 14.42933 }, timeToReachNext: 10 }],
-  new Date(1739612690546),
-  3,
-  10,
+  { maxAllowedDistance: 10, captureDuration: 3 },
 )
 
 export const ROOSTRIDER_TRACK = new Track(
@@ -132,7 +118,5 @@ export const ROOSTRIDER_TRACK = new Track(
     { position: { lat: 50.050224, lon: 14.419798 }, timeToReachNext: 6 },
     { position: { lat: 50.05033, lon: 14.420025 }, timeToReachNext: 5 },
   ],
-  new Date(1739612690546),
-  60 * 6,
-  30,
+  { maxAllowedDistance: 30, captureDuration: 60 * 6 },
 )

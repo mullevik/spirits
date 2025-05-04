@@ -12,9 +12,7 @@ export const SMALL_TRACK = new Track(
     { position: POINT_A, timeToReachNext: 60 },
     { position: POINT_B, timeToReachNext: 60 },
   ],
-  new Date(1739612690546),
-  CAPTURE_DURATION,
-  MAX_DISTANCE,
+  { captureDuration: CAPTURE_DURATION, maxAllowedDistance: MAX_DISTANCE },
 )
 
 test('signal strength decreases with time when stationary', () => {

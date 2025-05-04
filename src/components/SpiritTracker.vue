@@ -115,8 +115,9 @@ const onGameTick = () => {
 
   let newSignalStrength = 0
   const track = getTrack(captureIndex.value)
-  if (track && lastPosition.value) {
-    const goal = track.targetAt(new Date())
+  const now = new Date()
+  if (track && track.isActive(now) && lastPosition.value) {
+    const goal = track.targetAt(now)
     const headingDistance = headingDistanceTo(lastPosition.value, goal)
     newSignalStrength = getSignalStrength(headingDistance.distance, track.getMaxAllowedDistance())
     bearing.value = headingDistance.heading
