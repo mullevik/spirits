@@ -8,6 +8,7 @@ import Divider from 'primevue/divider'
 import Image from 'primevue/image'
 import type { Spirit } from '@/spirit'
 import { useCapturedSpirits } from '@/stores/capturedSpirits'
+import SpiritCheckpoints from '../components/SpiritCheckpoints.vue'
 
 const props = defineProps({
   spiritId: {
@@ -20,10 +21,12 @@ const spirit: Spirit = SPIRITS[props.spiritId]
 
 const capturedSpirits = useCapturedSpirits()
 const isCaptured = ref(capturedSpirits.isCaptured(spirit.id))
+const currentIndex = ref(capturedSpirits.getCaptureIndex(spirit.id))
 
 const resetSpirit = () => {
   capturedSpirits.resetSpirit(spirit.id)
   isCaptured.value = capturedSpirits.isCaptured(spirit.id)
+  currentIndex.value = capturedSpirits.getCaptureIndex(spirit.id)
 }
 
 const base = import.meta.env.BASE_URL
@@ -70,20 +73,27 @@ const base = import.meta.env.BASE_URL
           <p>{{ spirit.description }}</p>
 
           <Divider />
+          <div class="flex flex-col gap-3">
+            <SpiritCheckpoints
+              :index="currentIndex"
+              :max="spirit.tracks.length"
+              :showCurrent="false"
+            />
 
-          <div class="flex justify-center">
-            <div v-if="isCaptured">
-              <Button
-                icon="pi pi-trash"
-                label="Reset"
-                severity="danger"
-                @click="resetSpirit"
-              ></Button>
-            </div>
-            <div v-else>
-              <RouterLink :to="{ name: 'capture', params: { spiritId: props.spiritId } }">
-                <Button icon="pi pi-compass" label="Track"></Button>
-              </RouterLink>
+            <div class="flex justify-center">
+              <div v-if="isCaptured">
+                <Button
+                  icon="pi pi-trash"
+                  label="Reset"
+                  severity="danger"
+                  @click="resetSpirit"
+                ></Button>
+              </div>
+              <div v-else>
+                <RouterLink :to="{ name: 'capture', params: { spiritId: props.spiritId } }">
+                  <Button icon="pi pi-compass" label="Track"></Button>
+                </RouterLink>
+              </div>
             </div>
           </div>
         </template>
