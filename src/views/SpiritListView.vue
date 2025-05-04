@@ -22,6 +22,7 @@ const base = import.meta.env.BASE_URL
           <Avatar
             :image="`${base}spirits/${slotProps.data.id}.png`"
             class="mr-2"
+            :class="capturedSpiritsStore.isCaptured(slotProps.data.id) ? '' : 'blur-md'"
             size="large"
             shape="circle"
           />

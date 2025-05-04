@@ -7,7 +7,11 @@ export const CONTAINER_0 = new Track(
 
 export const CONTAINER_1 = new Track(
   [{ position: { lat: 50.0586344, lon: 14.42933 }, timeToReachNext: 10 }],
-  { maxAllowedDistance: 10, captureDuration: 3 },
+  {
+    maxAllowedDistance: 10,
+    captureDuration: 3,
+    // isActive: (dt: Date) => dt.getHours() < 3
+  },
 )
 
 export const ROOSTRIDER_TRACK = new Track(

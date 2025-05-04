@@ -8,7 +8,9 @@ import Divider from 'primevue/divider'
 import Image from 'primevue/image'
 import type { Spirit } from '@/spirit'
 import { useCapturedSpirits } from '@/stores/capturedSpirits'
-import SpiritCheckpoints from '../components/SpiritCheckpoints.vue'
+import SpiritCheckpoints from '@/components/SpiritCheckpoints.vue'
+import RoostriderDescription from '@/components/spirits/RoostriderDescription.vue'
+import EcoBunnyDescription from '@/components/spirits/EcoBunnyDescription.vue'
 
 const props = defineProps({
   spiritId: {
@@ -27,6 +29,17 @@ const resetSpirit = () => {
   capturedSpirits.resetSpirit(spirit.id)
   isCaptured.value = capturedSpirits.isCaptured(spirit.id)
   currentIndex.value = capturedSpirits.getCaptureIndex(spirit.id)
+}
+
+const getDescriptionComponent = () => {
+  switch (spirit.id) {
+    case 'roostrider':
+      return RoostriderDescription
+    case 'ecobunny':
+      return EcoBunnyDescription
+    default:
+      throw new Error(`Unknown spirit id: ${spirit.id}`)
+  }
 }
 
 const base = import.meta.env.BASE_URL
@@ -70,7 +83,7 @@ const base = import.meta.env.BASE_URL
         </template>
 
         <template #content>
-          <p>{{ spirit.description }}</p>
+          <component :is="getDescriptionComponent()"></component>
 
           <Divider />
           <div class="flex flex-col gap-3">

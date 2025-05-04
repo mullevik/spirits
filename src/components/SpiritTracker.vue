@@ -13,8 +13,12 @@
 
     <Divider />
 
-    <CompassWheel :bearing="bearing" :rotation="rotation" />
-
+    <CompassWheel
+      :bearing="bearing"
+      :rotation="rotation"
+      :message="compassMessage"
+      :severity="compassSeverity"
+    />
     <Divider />
 
     <ChargeBar :charge="charge" />
@@ -57,6 +61,9 @@ const props = defineProps({
     required: true,
   },
 })
+
+const compassMessage = ref('Searching')
+const compassSeverity = ref('info')
 
 const spirit: Spirit = SPIRITS[props.spiritId]
 
@@ -116,6 +123,15 @@ const onGameTick = () => {
   let newSignalStrength = 0
   const track = getTrack(captureIndex.value)
   const now = new Date()
+
+  if (!track) {
+    compassMessage.value = 'Spirit already captured'
+    compassSeverity.value = 'info'
+  } else if (!track.isActive(now)) {
+    compassMessage.value = 'The spirit can not be tracked at this moment'
+    compassSeverity.value = 'warn'
+  }
+
   if (track && track.isActive(now) && lastPosition.value) {
     const goal = track.targetAt(now)
     const headingDistance = headingDistanceTo(lastPosition.value, goal)
@@ -165,13 +181,18 @@ onMounted(() => {
         lat: e.coords.latitude,
         lon: e.coords.longitude,
       }
+      compassMessage.value = ''
+      compassSeverity.value = ''
     },
     (e: GeolocationPositionError) => {
       console.error('Failed to get location', e)
-      // todo: handle error
+      compassMessage.value = 'Cannot access your location'
+      compassSeverity.value = 'error'
     },
     () => {
       console.error('Failed to setup location')
+      compassMessage.value = 'Failed to ask for your location'
+      compassSeverity.value = 'error'
     },
   )
 })

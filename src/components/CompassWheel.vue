@@ -1,35 +1,65 @@
 <template>
-  <svg width="100%" height="200" viewBox="0 0 200 200">
-    <g id="compass" :transform="`translate(100, 100) rotate(${rotation})`">
-      <!-- Circle stroke -->
-      <circle
-        id="compass-circle"
-        cx="0"
-        cy="0"
-        r="90"
-        fill-opacity="0"
-        stroke="white"
-        stroke-width="2"
-        stroke-opacity="1"
-      />
-      <!-- "N" character -->
-      <text id="north-text" x="0" y="-65" text-anchor="middle" font-family="Arial" font-size="24">
-        N
-      </text>
-      <g v-if="bearing !== null" id="needle" :transform="`rotate(${bearing})`">
-        <!-- Compass needle -->
-        <polygon points="0,15 -10,5 0,-80 10,5" />
+  <div class="flex flex-col gap-2">
+    <div class="grid grid-cols-3 items-center">
+      <span class="justify-self-start"></span>
+      <span class="justify-self-center">
+        <Message v-if="message" :severity="severity" variant="outlined" size="small">
+          <template #icon>
+            <i v-if="severity === 'info'" class="pi pi-info-circle"></i>
+            <i v-else-if="severity === 'error'" class="pi pi-exclamation-triangle"></i>
+            <i v-else-if="severity === 'warn'" class="pi pi-exclamation-triangle"></i>
+          </template>
+          {{ message }}
+        </Message>
+      </span>
+      <span class="justify-self-end"
+        ><Button
+          icon="pi pi-question"
+          size="small"
+          rounded
+          severity="secondary"
+          @click="helpVisible = true"
+      /></span>
+    </div>
+    <svg width="100%" height="200" viewBox="0 0 200 200">
+      <g id="compass" :transform="`translate(100, 100) rotate(${rotation})`">
+        <!-- Circle stroke -->
+        <circle
+          id="compass-circle"
+          cx="0"
+          cy="0"
+          r="90"
+          fill-opacity="0"
+          stroke="white"
+          stroke-width="2"
+          stroke-opacity="1"
+        />
+        <!-- "N" character -->
+        <text id="north-text" x="0" y="-65" text-anchor="middle" font-family="Arial" font-size="24">
+          N
+        </text>
+        <g v-if="bearing !== null" id="needle" :transform="`rotate(${bearing})`">
+          <!-- Compass needle -->
+          <polygon points="0,15 -10,5 0,-80 10,5" />
+        </g>
+        <g v-else id="needle" class="rotate-animation">
+          <!-- Compass needle spinning because of unknown bearing -->
+          <polygon points="0,15 -10,5 0,-80 10,5" />
+        </g>
       </g>
-      <g v-else id="needle" class="rotate-animation">
-        <!-- Compass needle spinning because of unknown bearing -->
-        <polygon points="0,15 -10,5 0,-80 10,5" />
-      </g>
-    </g>
-  </svg>
+    </svg>
+  </div>
+
+  <Dialog v-model:visible="helpVisible" modal header="Compass Wheel" :style="{ width: '25rem' }">
+    <p>TODO</p>
+  </Dialog>
 </template>
 
 <script lang="ts" setup>
-import { defineProps } from 'vue'
+import { defineProps, ref } from 'vue'
+import Message from 'primevue/message'
+import Dialog from 'primevue/dialog'
+import Button from 'primevue/button'
 
 defineProps({
   bearing: {
@@ -40,7 +70,16 @@ defineProps({
     type: Number,
     default: 0,
   },
+  message: {
+    type: String,
+    default: '',
+  },
+  severity: {
+    type: String,
+    default: '',
+  },
 })
+const helpVisible = ref(false)
 </script>
 
 <style>
