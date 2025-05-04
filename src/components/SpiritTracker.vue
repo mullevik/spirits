@@ -2,7 +2,7 @@
   <Panel>
     <SpiritTarget
       :spiritId="spirit.id"
-      :spiritName="spirit.name"
+      :spiritName="isCaptured ? spirit.name : `Unknown ${spirit.kind}`"
       :index="captureIndex"
       :max="spirit.tracks.length"
     />
@@ -24,7 +24,7 @@
     <ChargeBar :charge="charge" />
   </Panel>
 
-  <CapturedDialog :spiritName="spirit.name" :index="captureIndex" :max="spirit.tracks.length" />
+  <CapturedDialog :spirit="spirit" :index="captureIndex" :max="spirit.tracks.length" />
 </template>
 
 <script lang="ts" setup>
@@ -90,6 +90,10 @@ const captureIndex = ref(capturedStore.getCaptureIndex(props.spiritId))
 watch(capturedStore.spiritCaptureIndices, () => {
   captureIndex.value = capturedStore.getCaptureIndex(props.spiritId)
 })
+const isCaptured = ref(capturedStore.isCaptured(props.spiritId))
+watch(capturedStore.spiritCaptureIndices, () => {
+  isCaptured.value = capturedStore.isCaptured(props.spiritId)
+})
 
 const increaseCharge = () => {
   const track = getTrack(captureIndex.value)
@@ -150,7 +154,6 @@ const showCaptureMessage = () => {
     message: 'Spirit captured',
     header: 'Captured!',
     icon: 'pi pi-check-circle',
-    position: 'bottom',
     accept: () => {
       if (capturedStore.isCaptured(props.spiritId)) {
         router.back()

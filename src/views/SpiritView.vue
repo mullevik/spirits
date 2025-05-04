@@ -55,7 +55,7 @@ const base = import.meta.env.BASE_URL
       </template>
 
       <template #center>
-        <h3>{{ spirit.name }}</h3>
+        <h3>{{ isCaptured ? spirit.name : `Unknwon ${spirit.kind}` }}</h3>
       </template>
 
       <template #end>
@@ -71,6 +71,7 @@ const base = import.meta.env.BASE_URL
           :src="`${base}spirits/${spirit.id}.png`"
           :alt="spirit.name"
           class="rounded"
+          :class="isCaptured ? '' : 'blur-lg'"
           width="100%"
         />
       </div>
@@ -79,11 +80,11 @@ const base = import.meta.env.BASE_URL
     <div class="flex justify-center">
       <Card class="w-lg">
         <template #title>
-          <h3>About {{ spirit.name }}</h3>
+          <h3>About</h3>
         </template>
 
         <template #content>
-          <component :is="getDescriptionComponent()"></component>
+          <component :is="getDescriptionComponent()" :isCaptured="isCaptured"></component>
 
           <Divider />
           <div class="flex flex-col gap-3">

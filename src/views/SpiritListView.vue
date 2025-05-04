@@ -12,30 +12,36 @@ const spirits = ref([...Object.values(SPIRITS)])
 
 const capturedSpiritsStore = useCapturedSpirits()
 const base = import.meta.env.BASE_URL
+
+const items = Object.values(spirits.value).map((spirit) => {
+  const isCaptured = capturedSpiritsStore.isCaptured(spirit.id)
+  return {
+    id: spirit.id,
+    name: isCaptured ? spirit.name : `Unknown ${spirit.kind}`,
+    state: isCaptured ? 'Captured' : 'Available',
+    isCaptured: isCaptured,
+  }
+})
 </script>
 
 <template>
   <main>
-    <DataTable :value="spirits" responsiveLayout="scroll">
+    <DataTable :value="items" responsiveLayout="scroll">
       <Column>
         <template #body="slotProps">
           <Avatar
             :image="`${base}spirits/${slotProps.data.id}.png`"
             class="mr-2"
-            :class="capturedSpiritsStore.isCaptured(slotProps.data.id) ? '' : 'blur-md'"
+            :class="slotProps.data.isCaptured ? '' : 'blur-md'"
             size="large"
             shape="circle"
           />
         </template>
       </Column>
       <Column field="name" header="Name" :sortable="true" style="width: 35%"> </Column>
-      <Column header="State" :sortable="true" style="width: 35%">
+      <Column field="state" header="State" :sortable="true" style="width: 35%">
         <template #body="slotProps">
-          <Tag
-            value="Captured"
-            v-if="capturedSpiritsStore.isCaptured(slotProps.data.id)"
-            severity="success"
-          ></Tag>
+          <Tag value="Captured" v-if="slotProps.data.isCaptured" severity="success"></Tag>
         </template>
       </Column>
       <Column style="width: 15%">

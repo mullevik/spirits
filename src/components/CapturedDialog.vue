@@ -2,9 +2,20 @@
   <ConfirmDialog group="captured">
     <template #container="{ acceptCallback }">
       <div class="flex flex-col gap-6 m-8">
-        <i class="pi pi-check-circle text-green-500 text-center !text-6xl"></i>
-        <h3 v-if="isCaptured">{{ spiritName }} <span class="font-bold">captured</span>!</h3>
-        <h3 v-else>One step closer to capture {{ spiritName }}</h3>
+        <div class="flex justify-center">
+          <Avatar
+            :image="`${base}spirits/${spirit.id}.png`"
+            class="mr-2"
+            :class="isCaptured ? '' : 'blur-md'"
+            size="large"
+            shape="circle"
+          />
+        </div>
+        <h3 v-if="isCaptured">
+          You have captured <span class="font-bold">{{ spirit.name }}</span
+          >!
+        </h3>
+        <h3 v-else>One step closer to capture unknown {{ spirit.kind }}</h3>
         <SpiritCheckpoints :index="index" :max="max" :showCurrent="false" />
         <Button v-if="isCaptured" label="Return" @click="acceptCallback"></Button>
         <Button v-else label="Continue" @click="acceptCallback"></Button>
@@ -18,10 +29,13 @@ import { defineProps, computed } from 'vue'
 import SpiritCheckpoints from './SpiritCheckpoints.vue'
 import Button from 'primevue/button'
 import ConfirmDialog from 'primevue/confirmdialog'
+import { type Spirit } from '@/spirit'
+import Avatar from 'primevue/avatar'
 
+const base = import.meta.env.BASE_URL
 const props = defineProps({
-  spiritName: {
-    type: String,
+  spirit: {
+    type: Object as () => Spirit,
     required: true,
   },
   index: {

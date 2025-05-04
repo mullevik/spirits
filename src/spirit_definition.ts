@@ -5,13 +5,13 @@ export const SPIRITS: { [key: SpiritId]: Spirit } = {
   roostrider: {
     id: 'roostrider',
     name: 'Roostrider',
-    description: 'Todo: description',
+    kind: 'Easter bird',
     tracks: [ROOSTRIDER_TRACK],
   },
   ecobunny: {
     id: 'ecobunny',
     name: 'Eco-Bunny',
-    description: 'Todo: description',
+    kind: 'Bunny',
     tracks: [CONTAINER_0, CONTAINER_1],
   },
 }
