@@ -51,7 +51,7 @@ const base = import.meta.env.BASE_URL
     <Toolbar style="padding: 0.5rem 1rem 0.5rem 1rem">
       <template #start>
         <RouterLink :to="{ name: 'spirit-list' }">
-          <Button icon="pi pi-arrow-left" class="mr-2" severity="secondary" />
+          <Button size="small" icon="pi pi-arrow-left" class="mr-2" severity="secondary" />
         </RouterLink>
       </template>
 
@@ -62,10 +62,15 @@ const base = import.meta.env.BASE_URL
       <template #end>
         <div class="flex gap-2">
           <RouterLink :to="{ name: 'map', params: { spiritId: props.spiritId } }">
-            <Button icon="pi pi-map" label="Map" severity="secondary"></Button>
+            <Button size="small" icon="pi pi-map" aria-label="Map" severity="secondary"></Button>
           </RouterLink>
           <RouterLink :to="{ name: 'capture', params: { spiritId: props.spiritId } }">
-            <Button icon="pi pi-compass" label="Track" :disabled="isCaptured"></Button>
+            <Button
+              size="small"
+              icon="pi pi-compass"
+              aria-label="Track"
+              :disabled="isCaptured"
+            ></Button>
           </RouterLink>
         </div>
       </template>

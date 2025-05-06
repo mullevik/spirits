@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col gap-2">
     <div class="grid grid-cols-3 items-center">
-      <span class="justify-self-start"><i class="pi pi-wifi"></i> Signal strength</span>
+      <span class="justify-self-start grow"><i class="pi pi-wifi"></i> Signal</span>
       <span class="justify-self-center">{{ signalStrength.toFixed(1) }} %</span>
       <span class="justify-self-end"
         ><Button

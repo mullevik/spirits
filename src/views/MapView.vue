@@ -2,7 +2,7 @@
   <Toolbar style="padding: 0.5rem 1rem 0.5rem 1rem">
     <template #start>
       <RouterLink :to="{ name: 'spirit', params: { spiritId: props.spiritId } }">
-        <Button icon="pi pi-arrow-left" class="mr-2" severity="secondary" />
+        <Button size="small" icon="pi pi-arrow-left" class="mr-2" severity="secondary" />
       </RouterLink>
     </template>
 
