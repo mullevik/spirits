@@ -1,5 +1,5 @@
 <template>
-  <Panel>
+  <Panel class="m-1 device">
     <SpiritTarget
       :spiritId="spirit.id"
       :spiritName="isCaptured ? spirit.name : `Unknown ${spirit.kind}`"
@@ -206,3 +206,9 @@ onBeforeUnmount(() => {
   }
 })
 </script>
+
+<style>
+.device {
+  background-image: radial-gradient(circle at left top, var(--p-surface-800), var(--p-surface-950));
+}
+</style>

@@ -2,10 +2,8 @@
 import { ref } from 'vue'
 import DataTable from 'primevue/datatable'
 import Column from 'primevue/column'
-import Button from 'primevue/button'
 import Avatar from 'primevue/avatar'
 import DifficultyStars from '@/components/DifficultyStars.vue'
-import Tag from 'primevue/tag'
 import { SPIRITS } from '@/spirit_definition'
 import { useCapturedSpirits } from '@/stores/capturedSpirits'
 
@@ -29,32 +27,26 @@ const items = Object.values(spirits.value).map((spirit) => {
 <template>
   <main>
     <DataTable :value="items" responsiveLayout="scroll">
-      <Column>
-        <template #body="slotProps">
-          <Avatar
-            :image="`${base}spirits/${slotProps.data.id}.png`"
-            class="mr-2"
-            :class="slotProps.data.isCaptured ? '' : 'blur-md'"
-            size="large"
-            shape="circle"
-          />
-        </template>
-      </Column>
-      <Column field="name" header="Name" :sortable="true" style="width: 40%"> </Column>
-      <Column field="state" header="State" :sortable="true" style="width: 20%">
-        <template #body="slotProps">
-          <Tag value="Captured" v-if="slotProps.data.isCaptured" severity="success"></Tag>
-        </template>
-      </Column>
-      <Column field="difficulty" header="Difficulty" :sortable="true" style="width: 20%">
-        <template #body="slotProps">
-          <DifficultyStars :difficulty="slotProps.data.difficulty"></DifficultyStars>
-        </template>
-      </Column>
-      <Column style="width: 15%">
+      <Column field="name" header="Name" :sortable="true">
         <template #body="slotProps">
           <RouterLink :to="{ name: 'spirit', params: { spiritId: slotProps.data.id } }">
-            <Button icon="pi pi-search" type="button" severity="secondary"></Button>
+            <div class="flex items-center gap-3">
+              <Avatar
+                :image="`${base}spirits/${slotProps.data.id}.png`"
+                class="mr-2"
+                :class="slotProps.data.isCaptured ? '' : 'blur-md'"
+                size="large"
+                shape="circle"
+              />
+              <span>{{ slotProps.data.name }}</span>
+            </div>
+          </RouterLink>
+        </template>
+      </Column>
+      <Column field="difficulty" header="Difficulty" :sortable="true">
+        <template #body="slotProps">
+          <RouterLink :to="{ name: 'spirit', params: { spiritId: slotProps.data.id } }">
+            <DifficultyStars :difficulty="slotProps.data.difficulty"></DifficultyStars>
           </RouterLink>
         </template>
       </Column>
