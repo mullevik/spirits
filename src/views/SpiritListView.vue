@@ -2,10 +2,8 @@
 import { ref } from 'vue'
 import DataTable from 'primevue/datatable'
 import Column from 'primevue/column'
-import Button from 'primevue/button'
 import Avatar from 'primevue/avatar'
 import DifficultyStars from '@/components/DifficultyStars.vue'
-import Tag from 'primevue/tag'
 import { SPIRITS } from '@/spirit_definition'
 import { useCapturedSpirits } from '@/stores/capturedSpirits'
 
