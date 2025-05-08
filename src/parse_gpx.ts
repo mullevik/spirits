@@ -27,10 +27,10 @@ const parseGpx = (filePath: string) => {
 
   // const durations: number[] = []
   // const distances: number[] = []
-  // for (let i = 0; i < coordinates.length - 1; i++) {
-  //   const speedSecondsPerMeter = (6.3 * 60) / 1000
+  // for (let i = coordinates.length - 1; i > 0; i--) {
+  //   const speedSecondsPerMeter = (5.6 * 60) / 1000
   //   const current = coordinates[i]
-  //   const next = coordinates[i + 1]
+  //   const next = coordinates[i - 1]
   //   const dist = distanceTo(current, next)
   //   distances.push(dist)
   //   const duration = dist * speedSecondsPerMeter

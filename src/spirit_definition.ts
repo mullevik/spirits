@@ -1,7 +1,7 @@
 import type { Spirit, SpiritId } from './spirit'
 import {
-  CONTAINER_0,
-  CONTAINER_1,
+  // CONTAINER_0,
+  // CONTAINER_1,
   HAFANG_FAST,
   HAFANG_FASTEST,
   HAFANG_FASTEST_DOUBLE,
@@ -11,39 +11,40 @@ import {
   KRYSAL_0,
   KRYSAL_1,
   KRYSAL_2,
+  MLOKOHOUT,
   PRASOCKA_0,
   PRASOCKA_1,
   PRASOCKA_2,
-  ROOSTRIDER_TRACK,
+  // ROOSTRIDER_TRACK,
   ZANKA,
 } from './track_definition'
 
 export const SPIRITS: { [key: SpiritId]: Spirit } = {
-  roostrider: {
-    id: 'roostrider',
-    name: 'Roostrider',
-    kind: 'Easter bird',
-    difficulty: 2,
-    tracks: [ROOSTRIDER_TRACK],
-    area: [
-      { lat: 50.0466272, lon: 14.4164581 },
-      { lat: 50.0478261, lon: 14.4283883 },
-      { lat: 50.0529378, lon: 14.4176597 },
-    ],
-  },
-  ecobunny: {
-    id: 'ecobunny',
-    name: 'Eco-Bunny',
-    kind: 'Bunny',
-    difficulty: 1,
-    tracks: [CONTAINER_0, CONTAINER_1],
-    area: [
-      { lat: 50.0591303, lon: 14.4259531 },
-      { lat: 50.0614239, lon: 14.4287961 },
-      { lat: 50.0591028, lon: 14.43371 },
-      { lat: 50.0576014, lon: 14.4300836 },
-    ],
-  },
+  // roostrider: {
+  //   id: 'roostrider',
+  //   name: 'Roostrider',
+  //   kind: 'Easter bird',
+  //   difficulty: 2,
+  //   tracks: [ROOSTRIDER_TRACK],
+  //   area: [
+  //     { lat: 50.0466272, lon: 14.4164581 },
+  //     { lat: 50.0478261, lon: 14.4283883 },
+  //     { lat: 50.0529378, lon: 14.4176597 },
+  //   ],
+  // },
+  // ecobunny: {
+  //   id: 'ecobunny',
+  //   name: 'Eco-Bunny',
+  //   kind: 'Bunny',
+  //   difficulty: 1,
+  //   tracks: [CONTAINER_0, CONTAINER_1],
+  //   area: [
+  //     { lat: 50.0591303, lon: 14.4259531 },
+  //     { lat: 50.0614239, lon: 14.4287961 },
+  //     { lat: 50.0591028, lon: 14.43371 },
+  //     { lat: 50.0576014, lon: 14.4300836 },
+  //   ],
+  // },
   krysal: {
     id: 'krysal',
     name: 'Krysal',
@@ -122,6 +123,23 @@ export const SPIRITS: { [key: SpiritId]: Spirit } = {
       { lat: 49.153354, lon: 13.65969 },
       { lat: 49.154392, lon: 13.65484 },
       { lat: 49.149789, lon: 13.652008 },
+    ],
+  },
+  mlokohout: {
+    id: 'mlokohout',
+    name: 'Mlokohout',
+    kind: 'Duch svítání',
+    difficulty: 1,
+    tracks: [MLOKOHOUT],
+    area: [
+      { lat: 49.139388, lon: 13.66514 },
+      { lat: 49.136552, lon: 13.674453 },
+      { lat: 49.140174, lon: 13.689902 },
+      { lat: 49.146463, lon: 13.691576 },
+      { lat: 49.152442, lon: 13.684924 },
+      { lat: 49.150926, lon: 13.661621 },
+      { lat: 49.147642, lon: 13.663896 },
+      { lat: 49.143403, lon: 13.663509 },
     ],
   },
 }
