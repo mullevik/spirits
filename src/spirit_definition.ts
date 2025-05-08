@@ -73,9 +73,9 @@ export const SPIRITS: { [key: SpiritId]: Spirit } = {
     difficulty: 3,
     tracks: [KOZOREL_0, KOZOREL_1],
     area: [
-      { lat: 49.072099, lon: 13.616167 },
-      { lat: 49.06552, lon: 13.621789 },
-      { lat: 49.062342, lon: 13.622948 },
+      { lat: 49.075979, lon: 13.61518 },
+      { lat: 49.065857, lon: 13.610502 },
+      { lat: 49.061808, lon: 13.619514 },
       { lat: 49.05939, lon: 13.628312 },
       { lat: 49.066392, lon: 13.638912 },
       { lat: 49.071172, lon: 13.635522 },

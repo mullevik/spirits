@@ -16,10 +16,8 @@ const items = Object.values(spirits.value).map((spirit) => {
   const isCaptured = capturedSpiritsStore.isCaptured(spirit.id)
   return {
     id: spirit.id,
-    name: isCaptured ? spirit.name : `Unknown ${spirit.kind}`,
-    state: isCaptured ? 'Captured' : 'Available',
+    name: isCaptured ? spirit.name : `${spirit.kind}`,
     difficulty: spirit.difficulty,
-    isCaptured: isCaptured,
   }
 })
 </script>
