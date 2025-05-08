@@ -2,6 +2,8 @@ import type { Spirit, SpiritId } from './spirit'
 import {
   CONTAINER_0,
   CONTAINER_1,
+  KOZOREL_0,
+  KOZOREL_1,
   KRYSAL_0,
   KRYSAL_1,
   KRYSAL_2,
@@ -62,6 +64,23 @@ export const SPIRITS: { [key: SpiritId]: Spirit } = {
       { lat: 49.012491, lon: 13.586378 },
       { lat: 49.05357, lon: 13.582087 },
       { lat: 49.063694, lon: 13.507586 },
+    ],
+  },
+  kozorel: {
+    id: 'kozorel',
+    name: 'Kozorel',
+    kind: 'Neznámý dravec',
+    difficulty: 3,
+    tracks: [KOZOREL_0, KOZOREL_1],
+    area: [
+      { lat: 49.072099, lon: 13.616167 },
+      { lat: 49.06552, lon: 13.621789 },
+      { lat: 49.062342, lon: 13.622948 },
+      { lat: 49.05939, lon: 13.628312 },
+      { lat: 49.066392, lon: 13.638912 },
+      { lat: 49.071172, lon: 13.635522 },
+      { lat: 49.077384, lon: 13.634063 },
+      { lat: 49.078256, lon: 13.626424 },
     ],
   },
 }

@@ -2,7 +2,7 @@
   <Panel class="m-1 device">
     <SpiritTarget
       :spiritId="spirit.id"
-      :spiritName="isCaptured ? spirit.name : `Unknown ${spirit.kind}`"
+      :spiritName="isCaptured ? spirit.name : `${spirit.kind}`"
       :index="captureIndex"
       :max="spirit.tracks.length"
     />

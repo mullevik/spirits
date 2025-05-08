@@ -14,6 +14,7 @@ import EcoBunnyDescription from '@/components/spirits/EcoBunnyDescription.vue'
 import DifficultyStars from '@/components/DifficultyStars.vue'
 import KrysalDescription from '@/components/spirits/KrysalDescription.vue'
 import PrasockaDescription from '@/components/spirits/PrasockaDescription.vue'
+import KozorelDescription from '@/components/spirits/KozorelDescription.vue'
 
 const props = defineProps({
   spiritId: {
@@ -44,6 +45,8 @@ const getDescriptionComponent = () => {
       return KrysalDescription
     case 'prasocka':
       return PrasockaDescription
+    case 'kozorel':
+      return KozorelDescription
     default:
       throw new Error(`Unknown spirit id: ${spirit.id}`)
   }
@@ -62,7 +65,7 @@ const base = import.meta.env.BASE_URL
       </template>
 
       <template #center>
-        <h3>{{ isCaptured ? spirit.name : `Unknwon ${spirit.kind}` }}</h3>
+        <h3>{{ isCaptured ? spirit.name : `${spirit.kind}` }}</h3>
       </template>
 
       <template #end>

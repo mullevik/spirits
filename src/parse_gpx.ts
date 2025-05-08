@@ -1,6 +1,6 @@
 import * as fs from 'fs'
 
-import { type LatLon } from 'geolocation-utils'
+import { type LatLon, distanceTo } from 'geolocation-utils'
 
 const parseGpx = (filePath: string) => {
   // Read the GPX file
@@ -21,10 +21,30 @@ const parseGpx = (filePath: string) => {
     }
   })
 
-  // Log or return the extracted coordinates
   for (const x of coordinates) {
     console.log(`{lat: ${x.lat}, lon: ${x.lon}},`)
   }
+
+  // const durations: number[] = []
+  // const distances: number[] = []
+  // for (let i = 0; i < coordinates.length - 1; i++) {
+  //   const speedSecondsPerMeter = (0.3 * 60) / 1000
+  //   const current = coordinates[i]
+  //   const next = coordinates[i + 1]
+  //   const dist = distanceTo(current, next)
+  //   distances.push(dist)
+  //   const duration = dist * speedSecondsPerMeter
+  //   durations.push(duration)
+  //   console.log(
+  //     `{position: {lat: ${current.lat}, lon: ${current.lon}}, timeToReachNext: ${duration.toFixed(2)}},`,
+  //   )
+  // }
+  // console.log(
+  //   `{position: {lat: ${coordinates[coordinates.length - 1].lat}, lon: ${coordinates[coordinates.length - 1].lon}}, timeToReachNext: 0},`,
+  // )
+  // const sm = durations.reduce((p, c) => p + c, 0)
+  // console.log(`sum: ${sm} seconds (${sm / 60} minutes)`)
+  // console.log(`dist: ${distances.reduce((p, c) => p + c, 0)}m`)
 }
 
 const filePath = process.argv[2]

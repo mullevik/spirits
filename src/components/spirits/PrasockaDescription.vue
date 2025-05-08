@@ -4,6 +4,8 @@
       Prasočka se ostatním duchům šumavských hor vyhýbá obloukem. Není vůbec zvědavá na jejich
       plánované sportování a profily na Stravě.
     </p>
+    <br />
+
     <p>
       Stravu jako takovou si však sama nenechá ujít na každém otevřeném občerstvení. Ze všeho nejvíc
       miluje sladké zákusky a mléko s kávovou příchutí.
@@ -18,6 +20,8 @@
         severity="secondary"
       />, <Badge value="2" severity="secondary" />).
     </p>
+    <br />
+
     <p>
       Aktivní životní styl tohoto ducha zjevně odpuzuje. O jeho zjevení vyprávějí pouze pohodlní
       pražáčci.

@@ -7,7 +7,7 @@
     </template>
 
     <template #center>
-      <h3>{{ isCaptured ? spirit.name : `Unknwon ${spirit.kind}` }}</h3>
+      <h3>{{ isCaptured ? spirit.name : `${spirit.kind}` }}</h3>
     </template>
 
     <template #end> </template>
