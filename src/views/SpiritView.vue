@@ -6,6 +6,7 @@ import Button from 'primevue/button'
 import Toolbar from 'primevue/toolbar'
 import Divider from 'primevue/divider'
 import Image from 'primevue/image'
+import Avatar from 'primevue/avatar'
 import type { Spirit } from '@/spirit'
 import { useCapturedSpirits } from '@/stores/capturedSpirits'
 import SpiritCheckpoints from '@/components/SpiritCheckpoints.vue'
@@ -95,13 +96,20 @@ const base = import.meta.env.BASE_URL
     </Toolbar>
 
     <div class="flex justify-center">
-      <div class="w-md m-3">
+      <div v-if="isCaptured" class="w-md m-3">
         <Image
           :src="`${base}spirits/${spirit.id}.png`"
           :alt="spirit.name"
           class="rounded"
-          :class="isCaptured ? '' : 'blur-lg'"
           width="100%"
+        />
+      </div>
+      <div v-else class="m-10">
+        <Avatar
+          :image="`${base}avatars/${spirit.id}.png`"
+          class="mr-2 blur-md"
+          size="large"
+          shape="circle"
         />
       </div>
     </div>
