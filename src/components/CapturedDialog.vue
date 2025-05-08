@@ -4,7 +4,7 @@
       <div class="flex flex-col gap-6 m-8">
         <div class="flex justify-center">
           <Avatar
-            :image="`${base}spirits/${spirit.id}.png`"
+            :image="`${base}avatars/${spirit.id}.png`"
             class="mr-2"
             :class="isCaptured ? '' : 'blur-md'"
             size="large"

@@ -12,6 +12,7 @@ import SpiritCheckpoints from '@/components/SpiritCheckpoints.vue'
 import RoostriderDescription from '@/components/spirits/RoostriderDescription.vue'
 import EcoBunnyDescription from '@/components/spirits/EcoBunnyDescription.vue'
 import DifficultyStars from '@/components/DifficultyStars.vue'
+import KrysalDescription from '@/components/spirits/KrysalDescription.vue'
 
 const props = defineProps({
   spiritId: {
@@ -38,6 +39,8 @@ const getDescriptionComponent = () => {
       return RoostriderDescription
     case 'ecobunny':
       return EcoBunnyDescription
+    case 'krysal':
+      return KrysalDescription
     default:
       throw new Error(`Unknown spirit id: ${spirit.id}`)
   }

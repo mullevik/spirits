@@ -1,5 +1,12 @@
 import type { Spirit, SpiritId } from './spirit'
-import { CONTAINER_0, CONTAINER_1, ROOSTRIDER_TRACK } from './track_definition'
+import {
+  CONTAINER_0,
+  CONTAINER_1,
+  KRYSAL_0,
+  KRYSAL_1,
+  KRYSAL_2,
+  ROOSTRIDER_TRACK,
+} from './track_definition'
 
 export const SPIRITS: { [key: SpiritId]: Spirit } = {
   roostrider: {
@@ -25,6 +32,20 @@ export const SPIRITS: { [key: SpiritId]: Spirit } = {
       { lat: 50.0614239, lon: 14.4287961 },
       { lat: 50.0591028, lon: 14.43371 },
       { lat: 50.0576014, lon: 14.4300836 },
+    ],
+  },
+  krysal: {
+    id: 'krysal',
+    name: 'Krysal',
+    kind: 'Vesnické strašidlo',
+    difficulty: 1,
+    tracks: [KRYSAL_0, KRYSAL_1, KRYSAL_2],
+    area: [
+      { lat: 49.136718, lon: 13.685837 },
+      { lat: 49.140088, lon: 13.685408 },
+      { lat: 49.142053, lon: 13.689914 },
+      { lat: 49.141197, lon: 13.692361 },
+      { lat: 49.136746, lon: 13.689292 },
     ],
   },
 }

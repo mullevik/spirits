@@ -124,3 +124,32 @@ export const ROOSTRIDER_TRACK = new Track(
   ],
   { maxAllowedDistance: 30, captureDuration: 60 * 6 },
 )
+
+const activeAtNight = (dt: Date) => dt.getHours() > 21 || dt.getHours() < 5
+
+export const KRYSAL_0 = new Track(
+  [{ position: { lat: 49.1402592, lon: 13.6906803 }, timeToReachNext: 1 }],
+  {
+    maxAllowedDistance: 15,
+    captureDuration: 10,
+    isActive: activeAtNight,
+  },
+)
+
+export const KRYSAL_1 = new Track(
+  [{ position: { lat: 49.1396647, lon: 13.6889428 }, timeToReachNext: 1 }],
+  {
+    maxAllowedDistance: 15,
+    captureDuration: 10,
+    isActive: activeAtNight,
+  },
+)
+
+export const KRYSAL_2 = new Track(
+  [{ position: { lat: 49.1387967, lon: 13.6881389 }, timeToReachNext: 1 }],
+  {
+    maxAllowedDistance: 15,
+    captureDuration: 10,
+    isActive: activeAtNight,
+  },
+)

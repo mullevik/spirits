@@ -32,7 +32,7 @@ const items = Object.values(spirits.value).map((spirit) => {
           <RouterLink :to="{ name: 'spirit', params: { spiritId: slotProps.data.id } }">
             <div class="flex items-center gap-3">
               <Avatar
-                :image="`${base}spirits/${slotProps.data.id}.png`"
+                :image="`${base}avatars/${slotProps.data.id}.png`"
                 class="mr-2"
                 :class="slotProps.data.isCaptured ? '' : 'blur-md'"
                 size="large"
