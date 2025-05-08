@@ -5,6 +5,9 @@ import {
   KRYSAL_0,
   KRYSAL_1,
   KRYSAL_2,
+  PRASOCKA_0,
+  PRASOCKA_1,
+  PRASOCKA_2,
   ROOSTRIDER_TRACK,
 } from './track_definition'
 
@@ -46,6 +49,19 @@ export const SPIRITS: { [key: SpiritId]: Spirit } = {
       { lat: 49.142053, lon: 13.689914 },
       { lat: 49.141197, lon: 13.692361 },
       { lat: 49.136746, lon: 13.689292 },
+    ],
+  },
+  prasocka: {
+    id: 'prasocka',
+    name: 'Prasočka',
+    kind: 'Neznámý mazel',
+    difficulty: 2,
+    tracks: [PRASOCKA_0, PRASOCKA_1, PRASOCKA_2],
+    area: [
+      { lat: 49.022398, lon: 13.493681 },
+      { lat: 49.012491, lon: 13.586378 },
+      { lat: 49.05357, lon: 13.582087 },
+      { lat: 49.063694, lon: 13.507586 },
     ],
   },
 }

@@ -153,3 +153,18 @@ export const KRYSAL_2 = new Track(
     isActive: activeAtNight,
   },
 )
+
+export const PRASOCKA_0 = new Track( // kvilda
+  [{ position: { lat: 49.0206414, lon: 13.5802333 }, timeToReachNext: 1 }],
+  { maxAllowedDistance: 30, captureDuration: 5 * 60 },
+)
+
+export const PRASOCKA_1 = new Track( // dasa
+  [{ position: { lat: 49.0264636, lon: 13.5149828 }, timeToReachNext: 1 }],
+  { maxAllowedDistance: 30, captureDuration: 7 * 60 },
+)
+
+export const PRASOCKA_2 = new Track( // modrava
+  [{ position: { lat: 49.0249594, lon: 13.4988722 }, timeToReachNext: 1 }],
+  { maxAllowedDistance: 30, captureDuration: 5 * 60 },
+)
