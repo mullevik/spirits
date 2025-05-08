@@ -442,3 +442,41 @@ export const HAFANG_FASTEST_DOUBLE = new Track(
     captureDuration: 237 * 2, // 3:30/km (two rounds)
   },
 )
+
+export const ZANKA = new Track(
+  [
+    { position: { lat: 49.145579, lon: 13.648822 }, timeToReachNext: 20.59 },
+    { position: { lat: 49.145368, lon: 13.649497 }, timeToReachNext: 23.87 },
+    { position: { lat: 49.145487, lon: 13.650345 }, timeToReachNext: 46.73 },
+    { position: { lat: 49.145551, lon: 13.65204 }, timeToReachNext: 34.68 },
+    { position: { lat: 49.146154, lon: 13.652899 }, timeToReachNext: 40.98 },
+    { position: { lat: 49.147073, lon: 13.653392 }, timeToReachNext: 35.31 },
+    { position: { lat: 49.147649, lon: 13.652459 }, timeToReachNext: 37.41 },
+    { position: { lat: 49.14774, lon: 13.651107 }, timeToReachNext: 22.05 },
+    { position: { lat: 49.14727, lon: 13.650753 }, timeToReachNext: 18.83 },
+    { position: { lat: 49.146828, lon: 13.65086 }, timeToReachNext: 19.37 },
+    { position: { lat: 49.146463, lon: 13.650431 }, timeToReachNext: 28.78 },
+    { position: { lat: 49.146399, lon: 13.64939 }, timeToReachNext: 27.92 },
+    { position: { lat: 49.146281, lon: 13.648392 }, timeToReachNext: 21.8 },
+    { position: { lat: 49.146049, lon: 13.647684 }, timeToReachNext: 23.37 },
+    { position: { lat: 49.146308, lon: 13.646933 }, timeToReachNext: 33.67 },
+    { position: { lat: 49.147108, lon: 13.646901 }, timeToReachNext: 37.34 },
+    { position: { lat: 49.147677, lon: 13.647942 }, timeToReachNext: 36.13 },
+    { position: { lat: 49.14774, lon: 13.649251 }, timeToReachNext: 31.61 },
+    { position: { lat: 49.147719, lon: 13.650399 }, timeToReachNext: 27.99 },
+    { position: { lat: 49.147509, lon: 13.651364 }, timeToReachNext: 30.82 },
+    { position: { lat: 49.147207, lon: 13.652384 }, timeToReachNext: 43.88 },
+    { position: { lat: 49.146498, lon: 13.653553 }, timeToReachNext: 22.12 },
+    { position: { lat: 49.145978, lon: 13.653671 }, timeToReachNext: 29.64 },
+    { position: { lat: 49.145277, lon: 13.653564 }, timeToReachNext: 39.66 },
+    { position: { lat: 49.144736, lon: 13.652384 }, timeToReachNext: 36.03 },
+    { position: { lat: 49.144736, lon: 13.651075 }, timeToReachNext: 44.4 },
+    { position: { lat: 49.144673, lon: 13.649465 }, timeToReachNext: 31.02 },
+    { position: { lat: 49.144702, lon: 13.648339 }, timeToReachNext: 30.2 },
+    { position: { lat: 49.145417, lon: 13.648435 }, timeToReachNext: 15 },
+  ],
+  {
+    maxAllowedDistance: 25,
+    captureDuration: 10 * 60,
+  },
+)

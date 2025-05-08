@@ -15,6 +15,7 @@ import {
   PRASOCKA_1,
   PRASOCKA_2,
   ROOSTRIDER_TRACK,
+  ZANKA,
 } from './track_definition'
 
 export const SPIRITS: { [key: SpiritId]: Spirit } = {
@@ -104,6 +105,23 @@ export const SPIRITS: { [key: SpiritId]: Spirit } = {
       { lat: 49.068367, lon: 13.620188 },
       { lat: 49.071403, lon: 13.615682 },
       { lat: 49.072823, lon: 13.612184 },
+    ],
+  },
+  zanka: {
+    id: 'zanka',
+    name: 'Zaňka',
+    kind: 'Lesní víla',
+    difficulty: 1,
+    tracks: [ZANKA],
+    area: [
+      { lat: 49.144231, lon: 13.643468 },
+      { lat: 49.131765, lon: 13.648661 },
+      { lat: 49.133113, lon: 13.656729 },
+      { lat: 49.136174, lon: 13.66205 },
+      { lat: 49.146365, lon: 13.663166 },
+      { lat: 49.153354, lon: 13.65969 },
+      { lat: 49.154392, lon: 13.65484 },
+      { lat: 49.149789, lon: 13.652008 },
     ],
   },
 }
