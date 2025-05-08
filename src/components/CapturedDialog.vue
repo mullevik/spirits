@@ -12,13 +12,13 @@
           />
         </div>
         <h3 v-if="isCaptured">
-          You have captured <span class="font-bold">{{ spirit.name }}</span
-          >!
+          Je to <span class="font-bold">{{ spirit.name }}</span
+          >&excl;
         </h3>
-        <h3 v-else>One step closer to capture unknown {{ spirit.kind }}</h3>
+        <h3 v-else>O krok blíže k vystopování: {{ spirit.kind }}</h3>
         <SpiritCheckpoints :index="index" :max="max" :showCurrent="false" />
-        <Button v-if="isCaptured" label="Return" @click="acceptCallback"></Button>
-        <Button v-else label="Continue" @click="acceptCallback"></Button>
+        <Button v-if="isCaptured" label="Hotovo" @click="acceptCallback"></Button>
+        <Button v-else label="Další část" @click="acceptCallback"></Button>
       </div>
     </template>
   </ConfirmDialog>

@@ -3,12 +3,18 @@ import SpiritListView from '../views/SpiritListView.vue'
 import SpiritView from '../views/SpiritView.vue'
 import CaptureDeviceView from '../views/CaptureDeviceView.vue'
 import MapView from '../views/MapView.vue'
+import LandingView from '../views/LandingView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
+      name: 'landing',
+      component: LandingView,
+    },
+    {
+      path: '/all',
       name: 'spirit-list',
       component: SpiritListView,
     },

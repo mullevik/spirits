@@ -109,7 +109,7 @@ const base = import.meta.env.BASE_URL
     <div class="flex justify-center">
       <Card class="w-lg">
         <template #title>
-          <h3>About</h3>
+          <h3>Popis</h3>
         </template>
 
         <template #content>
@@ -118,11 +118,11 @@ const base = import.meta.env.BASE_URL
           <Divider />
           <div class="flex flex-col gap-3">
             <div class="flex flex-row items-baseline">
-              <span class="mr-2">Difficulty:</span>
+              <span class="mr-2">Obtížnost:</span>
               <DifficultyStars :difficulty="spirit.difficulty" />
             </div>
             <div class="flex flex-row items-baseline" v-if="spirit.tracks.length > 1">
-              <span class="mr-2">Parts:</span>
+              <span class="mr-2">Stopy:</span>
 
               <SpiritCheckpoints
                 :index="currentIndex"
@@ -142,7 +142,7 @@ const base = import.meta.env.BASE_URL
               </div>
               <div v-else>
                 <RouterLink :to="{ name: 'capture', params: { spiritId: props.spiritId } }">
-                  <Button icon="pi pi-compass" label="Track"></Button>
+                  <Button icon="pi pi-compass" label="Stopovat"></Button>
                 </RouterLink>
               </div>
             </div>

@@ -37,6 +37,7 @@
 
 <script setup lang="ts">
 import { defineProps } from 'vue'
+import Message from 'primevue/message'
 defineProps({
   isCaptured: Boolean,
 })

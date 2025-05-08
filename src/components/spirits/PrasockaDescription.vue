@@ -14,11 +14,11 @@
   <div v-else>
     <p>
       V hlubokých lesích Šumavských hor žije duch, který rozhodně není obyčejný. Nejvíc na světě
-      miluje svačinky – rohlíčky, sušenky i knedlíčky (<Badge value="3" severity="secondary" />). A
+      miluje svačinky – rohlíčky, sušenky i knedlíčky (<Badge value="2" severity="secondary" />). A
       když už se objeví na vrcholku hory, nikdy si neodpustí šálek voňavé kávy (<Badge
         value="1"
         severity="secondary"
-      />, <Badge value="2" severity="secondary" />).
+      />, <Badge value="3" severity="secondary" />).
     </p>
     <br />
 

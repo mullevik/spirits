@@ -1,11 +1,7 @@
 <template>
   <div class="flex flex-col gap-2">
     <div class="grid grid-cols-3 items-center">
-      <span class="justify-self-start">
-        <i class="pi pi-bolt"></i> Charge
-        <!-- <span v-if="isCharging"><i class="pi pi-bolt"></i></span> -->
-        <!-- <span v-else-if="isDischarging">▼</span> -->
-      </span>
+      <span class="justify-self-start"> <i class="pi pi-bolt"></i> Náboj </span>
       <span class="justify-self-center">{{ `${charge.toFixed(1)}` }} %</span>
       <span class="justify-self-end"
         ><Button
@@ -24,10 +20,15 @@
     >
     </ProgressBar>
   </div>
-  <Dialog v-model:visible="helpVisible" modal header="Charge" :style="{ width: '25rem' }">
-    <p>When the signal strength is above 50 %, the device starts charging.</p>
-    <p>The device must be fully charged to capture a spirit.</p>
-    <p>When the device is fully charged, it automatically captures the spirit.</p>
+  <Dialog v-model:visible="helpVisible" modal header="Náboj" :style="{ width: '25rem' }">
+    <p>
+      Zařízení se nabíjí, pokud je síla signálu vyšší než 50 %. V opačném případě se zařízení s
+      postupem času vybíjí.
+    </p>
+    <br />
+    <p>Zařízení potřebuje být plně nabito aby dokázalo odhalit sledovanou bytost.</p>
+    <br />
+    <p>Pokud je zařízení plně nabito tak je sledovaná bytost odhalena automaticky.</p>
   </Dialog>
 </template>
 

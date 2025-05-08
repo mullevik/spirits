@@ -2,10 +2,11 @@
   <div class="flex flex-col">
     <div class="flex flex-row justify-center gap-2">
       <div>
-        Tracking: <span class="font-bold">{{ spiritName }}</span>
+        <span class="font-bold">{{ spiritName }}</span>
       </div>
     </div>
     <SpiritCheckpoints :index="index" :max="max" :showCurrent="true" />
+    <br />
   </div>
 </template>
 

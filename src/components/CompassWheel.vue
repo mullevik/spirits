@@ -50,8 +50,25 @@
     </svg>
   </div>
 
-  <Dialog v-model:visible="helpVisible" modal header="Compass Wheel" :style="{ width: '25rem' }">
-    <p>TODO</p>
+  <Dialog v-model:visible="helpVisible" modal header="Kompas" :style="{ width: '25rem' }">
+    <p>Střelka kompasu ukazuje směrem ke sledované bytosti.</p>
+    <br />
+    <p>
+      Pokud se střelka kompasu začne zmateně točit kolem své osy, může to být z následujících
+      přícin:
+    </p>
+    <br />
+
+    <ul>
+      <li>- zařízení nemá přístup k poloze nositele,</li>
+      <li>- duch nevykazuje žádné stopy a tedy nemůže být sledován.</li>
+    </ul>
+    <br />
+    <p>
+      Sever (naznačený písmenkem <i>N</i>) musí ukazovat na skutečný sever. Pokud tomu tak není,
+      musí nositel otáčet zařízení manualně tak, aby <i>N</i> ukazovalo na skutečný sever. Teprve
+      poté ukazuje střelka kompasu směrem ke sledované bytosti.
+    </p>
   </Dialog>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col gap-2">
     <div class="grid grid-cols-3 items-center">
-      <span class="justify-self-start grow"><i class="pi pi-wifi"></i> Signal</span>
+      <span class="justify-self-start grow"><i class="pi pi-wifi"></i> Signál</span>
       <span class="justify-self-center">{{ signalStrength.toFixed(1) }} %</span>
       <span class="justify-self-end"
         ><Button
@@ -18,14 +18,20 @@
     <div class="measure" :style="`width: ${REQUIRED_SIGNAL_STRENGTH}%`"></div>
   </div>
 
-  <Dialog v-model:visible="helpVisible" modal header="Signal Strength" :style="{ width: '25rem' }">
-    <p>Detects how close you are to the spirit.</p>
+  <Dialog v-model:visible="helpVisible" modal header="Síla signálu" :style="{ width: '25rem' }">
+    <p>Ukazuje jak blízko se nachází sledovaná bytost.</p>
+    <br />
+
     <p>
-      Note that the signal strength function converts the distance from the spirit world to our
-      reality. The conversion is not always linear - however you can be sure that the higher the
-      value, the closer you are to the spirit.
+      Čím blíže je zařízení ke sledované bytosti, tím vyšší je síla signálu. Kvůli převodu
+      vzdálenosti mezi světem duchů a světem lidí se nejedná o lineární funkci.
     </p>
-    <p>The signal strength must be <strong>above 50 %</strong> for the device to start charging.</p>
+    <br />
+
+    <p>
+      Sledovaná bytost je v bezprostřední blízkosti pouze pokud je síla signálu
+      <strong>vyšší než 50 %</strong>.
+    </p>
   </Dialog>
 </template>
 

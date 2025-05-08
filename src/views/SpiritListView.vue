@@ -18,6 +18,7 @@ const items = Object.values(spirits.value).map((spirit) => {
     id: spirit.id,
     name: isCaptured ? spirit.name : `${spirit.kind}`,
     difficulty: spirit.difficulty,
+    isCaptured: isCaptured,
   }
 })
 </script>
@@ -25,7 +26,7 @@ const items = Object.values(spirits.value).map((spirit) => {
 <template>
   <main>
     <DataTable :value="items" responsiveLayout="scroll">
-      <Column field="name" header="Name" :sortable="true">
+      <Column field="name" header="Název" :sortable="true">
         <template #body="slotProps">
           <RouterLink :to="{ name: 'spirit', params: { spiritId: slotProps.data.id } }">
             <div class="flex items-center gap-3">
@@ -41,7 +42,7 @@ const items = Object.values(spirits.value).map((spirit) => {
           </RouterLink>
         </template>
       </Column>
-      <Column field="difficulty" header="Difficulty" :sortable="true">
+      <Column field="difficulty" header="Obtížnost" :sortable="true">
         <template #body="slotProps">
           <RouterLink :to="{ name: 'spirit', params: { spiritId: slotProps.data.id } }">
             <DifficultyStars :difficulty="slotProps.data.difficulty"></DifficultyStars>

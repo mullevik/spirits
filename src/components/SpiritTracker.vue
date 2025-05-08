@@ -62,7 +62,7 @@ const props = defineProps({
   },
 })
 
-const compassMessage = ref('Searching')
+const compassMessage = ref('Vyhledávání bytosti')
 const compassSeverity = ref('info')
 
 const spirit: Spirit = SPIRITS[props.spiritId]
@@ -129,10 +129,10 @@ const onGameTick = () => {
   const now = new Date()
 
   if (!track) {
-    compassMessage.value = 'Spirit already captured'
+    compassMessage.value = 'Bytost se již zjevila'
     compassSeverity.value = 'info'
   } else if (!track.isActive(now)) {
-    compassMessage.value = 'The spirit can not be tracked at this moment'
+    compassMessage.value = 'Bytost v tuto chvíli nevykazuje žádné známky přítomnosti'
     compassSeverity.value = 'warn'
   }
 
@@ -189,12 +189,12 @@ onMounted(() => {
     },
     (e: GeolocationPositionError) => {
       console.error('Failed to get location', e)
-      compassMessage.value = 'Cannot access your location'
+      compassMessage.value = 'Nelze získat pozici nositele'
       compassSeverity.value = 'error'
     },
     () => {
       console.error('Failed to setup location')
-      compassMessage.value = 'Failed to ask for your location'
+      compassMessage.value = 'Nepodařilo se požádat o pozici nositele'
       compassSeverity.value = 'error'
     },
   )
