@@ -16,7 +16,8 @@ const items = Object.values(spirits.value).map((spirit) => {
   const isCaptured = capturedSpiritsStore.isCaptured(spirit.id)
   return {
     id: spirit.id,
-    name: isCaptured ? spirit.name : `${spirit.kind}`,
+    name: spirit.name,
+    kind: spirit.kind,
     difficulty: spirit.difficulty,
     isCaptured: isCaptured,
   }
@@ -37,7 +38,11 @@ const items = Object.values(spirits.value).map((spirit) => {
                 size="large"
                 shape="circle"
               />
-              <span>{{ slotProps.data.name }}</span>
+              <div v-if="slotProps.data.isCaptured" class="flex flex-col gap-1">
+                <span>{{ slotProps.data.name }}</span>
+                <span class="text-xs">{{ slotProps.data.kind }}</span>
+              </div>
+              <span v-else>{{ slotProps.data.kind }}</span>
             </div>
           </RouterLink>
         </template>
