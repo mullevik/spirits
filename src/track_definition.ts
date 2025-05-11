@@ -230,7 +230,7 @@ export const KOZOREL_1 = new Track(
     { position: { lat: 49.074664, lon: 13.631906 }, timeToReachNext: 1.51 },
     { position: { lat: 49.073912, lon: 13.632003 }, timeToReachNext: 1 },
   ],
-  { maxAllowedDistance: 18, captureDuration: 10 * 60 },
+  { maxAllowedDistance: 18, captureDuration: 9 * 60 },
 )
 
 export const HAFANG_SLOW = new Track(
