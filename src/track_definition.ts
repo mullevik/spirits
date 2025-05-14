@@ -2,14 +2,20 @@ import { Track } from './track'
 
 export const CONTAINER_0 = new Track(
   [{ position: { lat: 50.0589978, lon: 14.432535 }, timeToReachNext: 10 }],
-  { maxAllowedDistance: 10, captureDuration: 3 },
+  {
+    maxAllowedDistance: 10,
+    captureDuration: 5,
+    confirmMessage:
+      'Some super long confirm message. Some super long confirm message. Some super long confirm message.',
+  },
 )
 
 export const CONTAINER_1 = new Track(
   [{ position: { lat: 50.0586344, lon: 14.42933 }, timeToReachNext: 10 }],
   {
     maxAllowedDistance: 10,
-    captureDuration: 3,
+    captureDuration: 5,
+    confirmMessage: 'Near second container?',
   },
 )
 
