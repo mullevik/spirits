@@ -45,14 +45,14 @@ import { SPIRITS } from '@/spirit_definition'
 
 import { useConfirm } from 'primevue/useconfirm'
 import { defineProps } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, onBeforeRouteLeave } from 'vue-router'
 
 let _timer: NodeJS.Timeout | null = null
 
 const UPDATE_INTERVAL = 1000
 const REQUIRED_SIGNAL_STRENGTH = 50
 
-const confirmCapture = useConfirm()
+const confirm = useConfirm()
 
 const router = useRouter()
 const props = defineProps({
@@ -153,7 +153,7 @@ const onGameTick = () => {
 }
 
 const showCaptureMessage = () => {
-  confirmCapture.require({
+  confirm.require({
     group: 'captured',
     message: 'Spirit captured',
     header: 'Captured!',
@@ -202,6 +202,13 @@ onMounted(() => {
       compassSeverity.value = 'error'
     },
   )
+})
+
+onBeforeRouteLeave(() => {
+  if (charge.value > 0) {
+    return false
+  }
+  return true
 })
 
 onBeforeUnmount(() => {
