@@ -9,7 +9,7 @@
 
     <Divider />
 
-    <SignalStrengthBar :signalStrength="signalStrength" />
+    <SignalStrengthBar :signalStrength="signalStrength" :distance="distance" />
 
     <Divider />
 
@@ -68,6 +68,7 @@ const compassSeverity = ref('info')
 const spirit: Spirit = SPIRITS[props.spiritId]
 
 const signalStrength = ref(0)
+const distance: Ref<number | null> = ref(null)
 const charge = ref(MIN_CHARGE)
 const bearing: Ref<number | null> = ref(null)
 const rotation: Ref<number> = ref(0)
@@ -125,6 +126,7 @@ const onGameTick = () => {
   }
 
   let newSignalStrength = 0
+  let newDistance = null
   const track = getTrack(captureIndex.value)
   const now = new Date()
 
@@ -140,12 +142,14 @@ const onGameTick = () => {
     const goal = track.targetAt(now)
     const headingDistance = headingDistanceTo(lastPosition.value, goal)
     newSignalStrength = getSignalStrength(headingDistance.distance, track.getMaxAllowedDistance())
+    newDistance = headingDistance.distance
     bearing.value = headingDistance.heading
   } else {
     bearing.value = null
   }
 
   signalStrength.value = newSignalStrength
+  distance.value = newDistance
 }
 
 const showCaptureMessage = () => {
