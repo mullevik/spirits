@@ -1,16 +1,11 @@
 <template>
   <div class="flex flex-col gap-2">
-    <div class="grid grid-cols-3 items-center">
-      <span class="justify-self-start"> <i class="pi pi-bolt"></i> Náboj </span>
-      <span class="justify-self-center">{{ `${charge.toFixed(1)}` }} %</span>
-      <span class="justify-self-end"
-        ><Button
-          icon="pi pi-question"
-          size="small"
-          rounded
-          severity="secondary"
-          @click="helpVisible = true"
-      /></span>
+    <div class="flex">
+      <span class="w-1/2 justify-self-start">
+        <i class="pi pi-bolt" :class="isCharging ? 'charging' : 'discharging'"></i> Náboj
+      </span>
+      <span class="w-1/2 justify-self-end text-right">{{ `${charge.toFixed(1)}` }} %</span>
+      <span class="justify-self-end"></span>
     </div>
     <ProgressBar
       :value="charge"
@@ -36,7 +31,6 @@
 import { defineProps, toRefs, watch, ref } from 'vue'
 import ProgressBar from 'primevue/progressbar'
 import Dialog from 'primevue/dialog'
-import Button from 'primevue/button'
 
 const props = defineProps({
   charge: {
@@ -47,7 +41,7 @@ const props = defineProps({
 const { charge } = toRefs(props)
 const isCharging = ref(false)
 const isDischarging = ref(false)
-const helpVisible = ref(false)
+const helpVisible = ref(false) // todo: move dialog to tutorial
 
 watch(charge, (newVal, oldVal) => {
   isCharging.value = newVal > oldVal && newVal < 100
@@ -62,5 +56,11 @@ div.warn div.p-progressbar-value {
 
 progress.discharge::-webkit-progress-value {
   background-color: rgb(240, 96, 72);
+}
+i.charging {
+  color: var(--p-primary-500);
+}
+i.discharging {
+  color: var(--p-text-muted-color);
 }
 </style>
