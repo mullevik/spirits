@@ -1,23 +1,32 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { defineProps } from 'vue'
 import DataTable from 'primevue/datatable'
 import Column from 'primevue/column'
 import Avatar from 'primevue/avatar'
 import DifficultyStars from '@/components/DifficultyStars.vue'
 import { SPIRITS } from '@/spirit_definition'
+import { displayName } from '@/spirit'
 import { useCapturedSpirits } from '@/stores/capturedSpirits'
+import type { Spirit } from '@/spirit'
 
-const spirits = ref([...Object.values(SPIRITS)])
-
+const props = defineProps({
+  region: {
+    type: String,
+    required: true,
+  },
+})
 const capturedSpiritsStore = useCapturedSpirits()
 const base = import.meta.env.BASE_URL
 
-const items = Object.values(spirits.value).map((spirit) => {
+const items = Object.values(
+  [...Object.values(SPIRITS)].filter((s) => s.region === props.region),
+).map((spirit: Spirit) => {
   const isCaptured = capturedSpiritsStore.isCaptured(spirit.id)
   return {
     id: spirit.id,
     name: spirit.name,
     kind: spirit.kind,
+    displayName: displayName(spirit, isCaptured),
     difficulty: spirit.difficulty,
     isCaptured: isCaptured,
   }
@@ -27,7 +36,7 @@ const items = Object.values(spirits.value).map((spirit) => {
 <template>
   <main>
     <DataTable :value="items" responsiveLayout="scroll">
-      <Column field="name" header="Název" :sortable="true">
+      <Column field="displayName" header="Název" :sortable="true">
         <template #body="slotProps">
           <RouterLink :to="{ name: 'spirit', params: { spiritId: slotProps.data.id } }">
             <div class="flex items-center gap-3">

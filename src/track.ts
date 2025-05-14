@@ -104,18 +104,3 @@ export function interpolate(a: LatLon, b: LatLon, percentFromAToB: number) {
   const dstHeading = headingDistanceTo(a, b)
   return moveTo(a, { distance: dstHeading.distance * percentFromAToB, heading: dstHeading.heading })
 }
-
-const landmarks = [50, 100, 250, 500, 1000, 2000, 5000, 10000]
-
-export function approximateDistance(d: Meters): Meters {
-  if (d < landmarks[0]) {
-    return d
-  } else {
-    for (let i = landmarks.length - 1; i >= 0; i--) {
-      if (landmarks[i] > d) {
-        return landmarks[i]
-      }
-    }
-    return landmarks[landmarks.length - 1]
-  }
-}

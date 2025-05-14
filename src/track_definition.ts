@@ -10,7 +10,6 @@ export const CONTAINER_1 = new Track(
   {
     maxAllowedDistance: 10,
     captureDuration: 3,
-    // isActive: (dt: Date) => dt.getHours() < 3
   },
 )
 
