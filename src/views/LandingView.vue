@@ -49,7 +49,8 @@ const base = import.meta.env.BASE_URL
       </p>
       <br />
       <span>
-        <RouterLink :to="{ name: 'spirit-list' }"> <Button label="Souhlasím"></Button></RouterLink
+        <RouterLink :to="{ name: 'spirit-list', params: { region: 'sumava' } }">
+          <Button label="Souhlasím"></Button></RouterLink
       ></span>
       <br />
     </Panel>

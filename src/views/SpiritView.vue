@@ -7,7 +7,7 @@ import Toolbar from 'primevue/toolbar'
 import Divider from 'primevue/divider'
 import Image from 'primevue/image'
 import Avatar from 'primevue/avatar'
-import type { Spirit } from '@/spirit'
+import { displayName, type Spirit } from '@/spirit'
 import { useCapturedSpirits } from '@/stores/capturedSpirits'
 import SpiritCheckpoints from '@/components/SpiritCheckpoints.vue'
 import RoostriderDescription from '@/components/spirits/RoostriderDescription.vue'
@@ -69,13 +69,13 @@ const base = import.meta.env.BASE_URL
   <main>
     <Toolbar style="padding: 0.5rem 1rem 0.5rem 1rem">
       <template #start>
-        <RouterLink :to="{ name: 'spirit-list' }">
+        <RouterLink :to="{ name: 'spirit-list', params: { region: spirit.region } }">
           <Button size="small" icon="pi pi-arrow-left" class="mr-2" severity="secondary" />
         </RouterLink>
       </template>
 
       <template #center>
-        <h3>{{ isCaptured ? spirit.name : `${spirit.kind}` }}</h3>
+        <h3>{{ displayName(spirit, isCaptured) }}</h3>
       </template>
 
       <template #end>

@@ -1,7 +1,7 @@
 import type { Spirit, SpiritId } from './spirit'
 import {
-  // CONTAINER_0,
-  // CONTAINER_1,
+  CONTAINER_0,
+  CONTAINER_1,
   HAFANG_FAST,
   HAFANG_FASTEST,
   HAFANG_FASTEST_DOUBLE,
@@ -15,37 +15,38 @@ import {
   PRASOCKA_0,
   PRASOCKA_1,
   PRASOCKA_2,
-  // ROOSTRIDER_TRACK,
+  ROOSTRIDER_TRACK,
   ZANKA,
 } from './track_definition'
 
 export const SPIRITS: { [key: SpiritId]: Spirit } = {
-  // roostrider: {
-  //   id: 'roostrider',
-  //   name: 'Roostrider',
-  //   kind: 'Easter bird',
-  //   difficulty: 2,
-  //   tracks: [ROOSTRIDER_TRACK],
-  //   area: [
-  //     { lat: 50.0466272, lon: 14.4164581 },
-  //     { lat: 50.0478261, lon: 14.4283883 },
-  //     { lat: 50.0529378, lon: 14.4176597 },
-  //   ],
-  // },
-  // ecobunny: {
-  //   id: 'ecobunny',
-  //   name: 'Eco-Bunny',
-  //   kind: 'Bunny',
-  //   difficulty: 1,
-  //   tracks: [CONTAINER_0, CONTAINER_1],
-  //   area: [
-  //     { lat: 50.0591303, lon: 14.4259531 },
-  //     { lat: 50.0614239, lon: 14.4287961 },
-  //     { lat: 50.0591028, lon: 14.43371 },
-  //     { lat: 50.0576014, lon: 14.4300836 },
-  //   ],
-  // },
-
+  roostrider: {
+    id: 'roostrider',
+    name: 'Roostrider',
+    kind: 'Easter bird',
+    difficulty: 2,
+    tracks: [ROOSTRIDER_TRACK],
+    area: [
+      { lat: 50.0466272, lon: 14.4164581 },
+      { lat: 50.0478261, lon: 14.4283883 },
+      { lat: 50.0529378, lon: 14.4176597 },
+    ],
+    region: 'pecka',
+  },
+  ecobunny: {
+    id: 'ecobunny',
+    name: 'Eco-Bunny',
+    kind: 'Bunny',
+    difficulty: 1,
+    tracks: [CONTAINER_0, CONTAINER_1],
+    area: [
+      { lat: 50.0591303, lon: 14.4259531 },
+      { lat: 50.0614239, lon: 14.4287961 },
+      { lat: 50.0591028, lon: 14.43371 },
+      { lat: 50.0576014, lon: 14.4300836 },
+    ],
+    region: 'pecka',
+  },
   kozorel: {
     id: 'kozorel',
     name: 'Kozorel',
@@ -62,6 +63,7 @@ export const SPIRITS: { [key: SpiritId]: Spirit } = {
       { lat: 49.077384, lon: 13.634063 },
       { lat: 49.078256, lon: 13.626424 },
     ],
+    region: 'sumava',
   },
   mlokohout: {
     id: 'mlokohout',
@@ -79,6 +81,7 @@ export const SPIRITS: { [key: SpiritId]: Spirit } = {
       { lat: 49.147642, lon: 13.663896 },
       { lat: 49.143403, lon: 13.663509 },
     ],
+    region: 'sumava',
   },
   hafang: {
     id: 'hafang',
@@ -98,6 +101,7 @@ export const SPIRITS: { [key: SpiritId]: Spirit } = {
       { lat: 49.071403, lon: 13.615682 },
       { lat: 49.072823, lon: 13.612184 },
     ],
+    region: 'sumava',
   },
   zanka: {
     id: 'zanka',
@@ -115,6 +119,7 @@ export const SPIRITS: { [key: SpiritId]: Spirit } = {
       { lat: 49.154392, lon: 13.65484 },
       { lat: 49.149789, lon: 13.652008 },
     ],
+    region: 'sumava',
   },
   krysal: {
     id: 'krysal',
@@ -129,6 +134,7 @@ export const SPIRITS: { [key: SpiritId]: Spirit } = {
       { lat: 49.141197, lon: 13.692361 },
       { lat: 49.136746, lon: 13.689292 },
     ],
+    region: 'sumava',
   },
   prasocka: {
     id: 'prasocka',
@@ -142,5 +148,6 @@ export const SPIRITS: { [key: SpiritId]: Spirit } = {
       { lat: 49.05357, lon: 13.582087 },
       { lat: 49.063694, lon: 13.507586 },
     ],
+    region: 'sumava',
   },
 }

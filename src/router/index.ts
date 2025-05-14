@@ -14,9 +14,10 @@ const router = createRouter({
       component: LandingView,
     },
     {
-      path: '/all',
+      path: '/all/:region',
       name: 'spirit-list',
       component: SpiritListView,
+      props: true,
     },
     {
       path: '/spirit/:spiritId',

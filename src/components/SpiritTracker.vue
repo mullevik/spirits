@@ -2,7 +2,7 @@
   <Panel class="m-1 device">
     <SpiritTarget
       :spiritId="spirit.id"
-      :spiritName="isCaptured ? spirit.name : `${spirit.kind}`"
+      :spiritName="displayName(spirit, isCaptured)"
       :index="captureIndex"
       :max="spirit.tracks.length"
     />
@@ -40,7 +40,7 @@ import { headingDistanceTo, type LatLon } from 'geolocation-utils'
 import { setupOrientation, setupLocation } from '@/sensors'
 import { useCapturedSpirits } from '@/stores/capturedSpirits'
 import { getSignalStrength, MAX_CHARGE, MIN_CHARGE, type Track } from '@/track'
-import type { Spirit } from '@/spirit'
+import { displayName, type Spirit } from '@/spirit'
 import { SPIRITS } from '@/spirit_definition'
 
 import { useConfirm } from 'primevue/useconfirm'
