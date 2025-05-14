@@ -25,6 +25,17 @@
   </Panel>
 
   <CapturedDialog :spirit="spirit" :index="captureIndex" :max="spirit.tracks.length" />
+
+  <Dialog v-model:visible="trackConfirmMessageVisible" modal>
+    <p class="text-lg">{{ trackConfirmMessage }}</p>
+    <br />
+    <div class="flex justify-center gap-2">
+      <RouterLink :to="{ name: 'spirit', params: { spiritId: spirit.id } }">
+        <Button type="button" label="Odejít" severity="secondary"></Button>
+      </RouterLink>
+      <Button type="button" label="Potvrzuji" @click="giveTrackConfirmation"></Button>
+    </div>
+  </Dialog>
 </template>
 
 <script lang="ts" setup>
@@ -34,8 +45,11 @@ import CompassWheel from './CompassWheel.vue'
 import SpiritTarget from './SpiritTarget.vue'
 import ChargeBar from './ChargeBar.vue'
 import Divider from 'primevue/divider'
+import Dialog from 'primevue/dialog'
+import Button from 'primevue/button'
+
 import CapturedDialog from './CapturedDialog.vue'
-import { ref, watch, type Ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, computed, watch, type Ref, onMounted, onBeforeUnmount } from 'vue'
 import { headingDistanceTo, type LatLon } from 'geolocation-utils'
 import { setupOrientation, setupLocation } from '@/sensors'
 import { useCapturedSpirits } from '@/stores/capturedSpirits'
@@ -85,9 +99,22 @@ const getTrack = (index: number): Track | null => {
   return index < spirit.tracks.length ? spirit.tracks[index] : null
 }
 
+const getConfirmMessage = (index: number): string | null => {
+  const track = getTrack(index)
+  return track ? track.confirmMessage : null
+}
+
 const capturedStore = useCapturedSpirits()
 
 const captureIndex = ref(capturedStore.getCaptureIndex(props.spiritId))
+const trackConfirmedByUser = ref(false)
+const trackConfirmMessageVisible = ref(false)
+
+const giveTrackConfirmation = () => {
+  trackConfirmedByUser.value = true
+  trackConfirmMessageVisible.value = false
+}
+
 watch(capturedStore.spiritCaptureIndices, () => {
   captureIndex.value = capturedStore.getCaptureIndex(props.spiritId)
 })
@@ -95,6 +122,8 @@ const isCaptured = ref(capturedStore.isCaptured(props.spiritId))
 watch(capturedStore.spiritCaptureIndices, () => {
   isCaptured.value = capturedStore.isCaptured(props.spiritId)
 })
+
+const trackConfirmMessage = computed(() => getConfirmMessage(captureIndex.value))
 
 const increaseCharge = () => {
   const track = getTrack(captureIndex.value)
@@ -113,14 +142,21 @@ const decreaseCharge = () => {
 
 const captureSpiritOnce = () => {
   console.log('Spirit captured!')
-  capturedStore.captureSpirit(props.spiritId)
   charge.value = MIN_CHARGE
+  signalStrength.value = 0
+  trackConfirmedByUser.value = false
+  captureIndex.value += 1
+  capturedStore.captureSpirit(props.spiritId)
   showCaptureMessage()
 }
 
 const onGameTick = () => {
   if (signalStrength.value >= REQUIRED_SIGNAL_STRENGTH) {
-    increaseCharge()
+    if (trackConfirmedByUser.value || trackConfirmMessage.value == null) {
+      increaseCharge()
+    } else {
+      trackConfirmMessageVisible.value = true
+    }
   } else {
     decreaseCharge()
   }

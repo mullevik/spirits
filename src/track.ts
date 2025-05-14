@@ -20,6 +20,7 @@ export class Track {
   private captureDuration: Seconds
   private maxAllowedDistance: Meters
   public isActive: (dt: Date) => boolean
+  public confirmMessage: string | null
 
   constructor(
     pts: TrackPoint[],
@@ -29,11 +30,13 @@ export class Track {
       maxAllowedDistance = 30,
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       isActive = (dt: Date): boolean => true,
+      confirmMessage = null,
     }: {
       beginAt?: Date
       captureDuration?: Seconds
       maxAllowedDistance?: Meters
       isActive?: (dt: Date) => boolean
+      confirmMessage?: string | null
     },
   ) {
     if (pts.length < 1) {
@@ -44,6 +47,7 @@ export class Track {
     this.captureDuration = captureDuration
     this.maxAllowedDistance = maxAllowedDistance
     this.isActive = isActive
+    this.confirmMessage = confirmMessage
   }
 
   public getMaxAllowedDistance(): Meters {
