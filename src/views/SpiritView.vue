@@ -23,6 +23,7 @@ import JezevecDescription from '@/components/spirits/JezevecDescription.vue'
 import VlasickaDescription from '@/components/spirits/VlasickaDescription.vue'
 import HrebenDescription from '@/components/spirits/HrebenDescription.vue'
 import ZardinkaDescription from '@/components/spirits/ZardinkaDescription.vue'
+import ChobotniceDescription from '@/components/spirits/ChobotniceDescription.vue'
 
 const props = defineProps({
   spiritId: {
@@ -69,6 +70,8 @@ const getDescriptionComponent = () => {
       return HrebenDescription
     case 'zardinka':
       return ZardinkaDescription
+    case 'chobotnice':
+      return ChobotniceDescription
     default:
       throw new Error(`Unknown spirit id: ${spirit.id}`)
   }

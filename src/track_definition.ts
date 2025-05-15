@@ -715,3 +715,20 @@ export const ZARDINKA_2 = new Track(
     confirmMessage: 'Máš chodidla ponořené ve vodě?',
   },
 )
+export const CHOBOTNICE_0 = new Track(
+  [{ position: { lat: 50.5226744, lon: 15.2099819 }, timeToReachNext: 1 }],
+  {
+    maxAllowedDistance: 30,
+    captureDuration: 32,
+    confirmMessage: 'Máš připravený půllitr bublinkového nápoje?',
+  },
+)
+
+export const CHOBOTNICE_1 = new Track(
+  [{ position: { lat: 50.5226744, lon: 15.2099819 }, timeToReachNext: 1 }],
+  {
+    maxAllowedDistance: 30,
+    captureDuration: 1,
+    confirmMessage: 'Zvládl/a jsi to během nabíjení?',
+  },
+)

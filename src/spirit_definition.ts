@@ -1,5 +1,7 @@
 import type { Spirit, SpiritId } from './spirit'
 import {
+  CHOBOTNICE_0,
+  CHOBOTNICE_1,
   CONTAINER_0,
   CONTAINER_1,
   HAFANG_FAST,
@@ -214,6 +216,20 @@ export const SPIRITS: { [key: SpiritId]: Spirit } = {
       { lat: 50.523409, lon: 15.209288 },
       { lat: 50.520872, lon: 15.211348 },
       { lat: 50.513955, lon: 15.19798 },
+    ],
+    region: 'pecka',
+  },
+  chobotnice: {
+    id: 'chobotnice',
+    name: 'Chobotnice',
+    kind: 'Místní přelud',
+    difficulty: 1,
+    tracks: [CHOBOTNICE_0, CHOBOTNICE_1],
+    area: [
+      { lat: 50.520869, lon: 15.20869 },
+      { lat: 50.522492, lon: 15.215535 },
+      { lat: 50.526857, lon: 15.213496 },
+      { lat: 50.523324, lon: 15.205578 },
     ],
     region: 'pecka',
   },
