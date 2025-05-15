@@ -2,7 +2,7 @@ import * as fs from 'fs'
 
 import { type LatLon, distanceTo } from 'geolocation-utils'
 
-const parseGpx = (filePath: string, paceMinutesPerKm: number | null) => {
+const parseGpx = (filePath: string, paceMinutesPerKm: number | null, reverse: boolean) => {
   // Read the GPX file
   const data = fs.readFileSync(filePath, 'utf8')
 
@@ -21,12 +21,16 @@ const parseGpx = (filePath: string, paceMinutesPerKm: number | null) => {
     }
   })
 
+  if (reverse) {
+    coordinates.reverse()
+  }
+
   if (paceMinutesPerKm) {
     coordinates.push(coordinates[0])
     const durations: number[] = []
     const distances: number[] = []
     for (let i = 0; i < coordinates.length - 1; i++) {
-      const speedSecondsPerMeter = (9 * 60) / 1000
+      const speedSecondsPerMeter = (paceMinutesPerKm * 60) / 1000
       const current = coordinates[i]
       const next = coordinates[i + 1]
       const dist = distanceTo(current, next)
@@ -49,10 +53,11 @@ const parseGpx = (filePath: string, paceMinutesPerKm: number | null) => {
 
 const filePath = process.argv[2]
 const paceMinutesPerKm: number | null = process.argv[3] ? parseFloat(process.argv[3]) : null
+const reverse: boolean = process.argv[4] ? process.argv[4] === 'rev' : false
 
 if (!filePath) {
   console.error('Please provide a file path as an argument')
   process.exit(1)
 }
 
-parseGpx(filePath, paceMinutesPerKm)
+parseGpx(filePath, paceMinutesPerKm, reverse)

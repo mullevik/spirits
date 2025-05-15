@@ -1,5 +1,9 @@
 import { Track } from './track'
 
+const activeInTheMorning = (dt: Date) => dt.getHours() >= 5 && dt.getHours() < 7
+const activeAtNight = (dt: Date) => dt.getHours() > 21 || dt.getHours() < 5
+const activeAtMidnight = (dt: Date) => dt.getHours() >= 0 && dt.getHours() < 3
+
 export const CONTAINER_0 = new Track(
   [{ position: { lat: 50.0589978, lon: 14.432535 }, timeToReachNext: 10 }],
   {
@@ -129,8 +133,6 @@ export const ROOSTRIDER_TRACK = new Track(
   ],
   { maxAllowedDistance: 30, captureDuration: 60 * 6 },
 )
-
-const activeAtNight = (dt: Date) => dt.getHours() > 21 || dt.getHours() < 5
 
 export const KRYSAL_0 = new Track(
   [{ position: { lat: 49.1402592, lon: 13.6906803 }, timeToReachNext: 1 }],
@@ -487,8 +489,6 @@ export const ZANKA = new Track(
   },
 )
 
-const activeInTheMorning = (dt: Date) => dt.getHours() >= 5 && dt.getHours() < 7
-
 export const MLOKOHOUT = new Track(
   [
     { position: { lat: 49.146701, lon: 13.684645 }, timeToReachNext: 36.09 },
@@ -567,5 +567,31 @@ export const JEZEVEC = new Track(
     captureDuration: 2 * 60,
     isActive: activeAtNight,
     confirmMessage: 'Jsi skutečně o samotě?',
+  },
+)
+
+export const VLASICKA = new Track(
+  [
+    // going up
+    { position: { lat: 50.510396, lon: 15.229333 }, timeToReachNext: 90.22 },
+    { position: { lat: 50.511876, lon: 15.227386 }, timeToReachNext: 3.97 },
+    { position: { lat: 50.511949, lon: 15.227454 }, timeToReachNext: 36.72 },
+    { position: { lat: 50.512033, lon: 15.228682 }, timeToReachNext: 5.84 },
+    { position: { lat: 50.512131, lon: 15.228804 }, timeToReachNext: 56.92 },
+    { position: { lat: 50.513348, lon: 15.228753 }, timeToReachNext: 11.0 },
+    { position: { lat: 50.513571, lon: 15.228871 }, timeToReachNext: 1 },
+    // going down
+    { position: { lat: 50.513571, lon: 15.228871 }, timeToReachNext: 9.43 },
+    { position: { lat: 50.513348, lon: 15.228753 }, timeToReachNext: 48.79 },
+    { position: { lat: 50.512131, lon: 15.228804 }, timeToReachNext: 5.01 },
+    { position: { lat: 50.512033, lon: 15.228682 }, timeToReachNext: 31.48 },
+    { position: { lat: 50.511949, lon: 15.227454 }, timeToReachNext: 3.4 },
+    { position: { lat: 50.511876, lon: 15.227386 }, timeToReachNext: 77.33 },
+    { position: { lat: 50.510396, lon: 15.229333 }, timeToReachNext: 1 },
+  ],
+  {
+    maxAllowedDistance: 20,
+    captureDuration: 5 * 60,
+    isActive: activeAtMidnight,
   },
 )

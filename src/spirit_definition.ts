@@ -17,6 +17,7 @@ import {
   PRASOCKA_1,
   PRASOCKA_2,
   ROOSTRIDER_TRACK,
+  VLASICKA,
   ZANKA,
 } from './track_definition'
 
@@ -162,6 +163,20 @@ export const SPIRITS: { [key: SpiritId]: Spirit } = {
       { lat: 50.510168, lon: 15.221936 },
       { lat: 50.511757, lon: 15.226935 },
       { lat: 50.513401, lon: 15.224221 },
+    ],
+    region: 'pecka',
+  },
+  vlasicka: {
+    id: 'vlasicka',
+    name: 'Vlasička',
+    kind: 'Měsíční víla',
+    difficulty: 2,
+    tracks: [VLASICKA],
+    area: [
+      { lat: 50.515252, lon: 15.226049 },
+      { lat: 50.510217, lon: 15.225963 },
+      { lat: 50.509807, lon: 15.230705 },
+      { lat: 50.514842, lon: 15.231349 },
     ],
     region: 'pecka',
   },
