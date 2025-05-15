@@ -22,6 +22,9 @@ import {
   ROOSTRIDER_TRACK,
   VLASICKA,
   ZANKA,
+  ZARDINKA_0,
+  ZARDINKA_1,
+  ZARDINKA_2,
 } from './track_definition'
 
 export const SPIRITS: { [key: SpiritId]: Spirit } = {
@@ -197,6 +200,20 @@ export const SPIRITS: { [key: SpiritId]: Spirit } = {
       { lat: 50.509627, lon: 15.230579 },
       { lat: 50.508794, lon: 15.228766 },
       { lat: 50.50846, lon: 15.227693 },
+    ],
+    region: 'pecka',
+  },
+  zardinka: {
+    id: 'zardinka',
+    name: 'Žardinka',
+    kind: 'Duše pramenu',
+    difficulty: 2,
+    tracks: [ZARDINKA_0, ZARDINKA_1, ZARDINKA_2],
+    area: [
+      { lat: 50.515919, lon: 15.195812 },
+      { lat: 50.523409, lon: 15.209288 },
+      { lat: 50.520872, lon: 15.211348 },
+      { lat: 50.513955, lon: 15.19798 },
     ],
     region: 'pecka',
   },

@@ -688,3 +688,30 @@ export const HREBEN_FASTEST = new Track(
     captureDuration: 4 * 60,
   },
 )
+
+export const ZARDINKA_0 = new Track(
+  [{ position: { lat: 50.5178347, lon: 15.2019625 }, timeToReachNext: 1 }],
+  {
+    maxAllowedDistance: 15,
+    captureDuration: 15,
+    confirmMessage: 'Máš chodidla ponořené ve vodě?',
+  },
+)
+
+export const ZARDINKA_1 = new Track(
+  [{ position: { lat: 50.5188644, lon: 15.2045906 }, timeToReachNext: 1 }],
+  {
+    maxAllowedDistance: 15,
+    captureDuration: 15,
+    confirmMessage: 'Máš chodidla ponořené ve vodě?',
+  },
+)
+
+export const ZARDINKA_2 = new Track(
+  [{ position: { lat: 50.5218611, lon: 15.2081667 }, timeToReachNext: 1 }],
+  {
+    maxAllowedDistance: 15,
+    captureDuration: 15,
+    confirmMessage: 'Máš chodidla ponořené ve vodě?',
+  },
+)
