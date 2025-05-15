@@ -3,6 +3,17 @@ import { Track } from './track'
 const activeInTheMorning = (dt: Date) => dt.getHours() >= 5 && dt.getHours() < 7
 const activeAtNight = (dt: Date) => dt.getHours() > 21 || dt.getHours() < 5
 const activeAtMidnight = (dt: Date) => dt.getHours() >= 0 && dt.getHours() < 3
+const activeAtSunset = (dt: Date) => {
+  if (dt.getHours() == 19 && dt.getMinutes() > 30) {
+    return true
+  } else if (dt.getHours() >= 20 && dt.getHours() < 21) {
+    return true
+  } else if (dt.getHours() == 21 && dt.getMinutes() < 30) {
+    return true
+  } else {
+    return false
+  }
+}
 
 export const CONTAINER_0 = new Track(
   [{ position: { lat: 50.0589978, lon: 14.432535 }, timeToReachNext: 10 }],
@@ -20,6 +31,14 @@ export const CONTAINER_1 = new Track(
     maxAllowedDistance: 10,
     captureDuration: 5,
     confirmMessage: 'Near second container?',
+  },
+)
+export const CONTAINER_2 = new Track(
+  [{ position: { lat: 50.0586344, lon: 14.42933 }, timeToReachNext: 10 }],
+  {
+    maxAllowedDistance: 10,
+    captureDuration: 5,
+    confirmMessage: 'Near second container again?',
   },
 )
 
@@ -730,5 +749,34 @@ export const CHOBOTNICE_1 = new Track(
     maxAllowedDistance: 30,
     captureDuration: 1,
     confirmMessage: 'Zvládl/a jsi to během nabíjení?',
+  },
+)
+
+export const CHROUSTRAB = new Track(
+  [
+    { position: { lat: 50.512579, lon: 15.22805 }, timeToReachNext: 30 }, // landing
+    { position: { lat: 50.512556, lon: 15.228038 }, timeToReachNext: 8.69 },
+    { position: { lat: 50.511253, lon: 15.229569 }, timeToReachNext: 8.34 },
+    { position: { lat: 50.511014, lon: 15.227145 }, timeToReachNext: 9.51 },
+    { position: { lat: 50.512792, lon: 15.227271 }, timeToReachNext: 30 }, // landing
+    { position: { lat: 50.512845, lon: 15.227268 }, timeToReachNext: 10.41 },
+    { position: { lat: 50.513157, lon: 15.224245 }, timeToReachNext: 7.64 },
+    { position: { lat: 50.514582, lon: 15.224438 }, timeToReachNext: 10.96 },
+    { position: { lat: 50.515101, lon: 15.22756 }, timeToReachNext: 10.77 },
+    { position: { lat: 50.513095, lon: 15.227866 }, timeToReachNext: 30 }, // landing
+    { position: { lat: 50.513057, lon: 15.227882 }, timeToReachNext: 9.13 },
+    { position: { lat: 50.513979, lon: 15.230146 }, timeToReachNext: 9.04 },
+    { position: { lat: 50.513187, lon: 15.232496 }, timeToReachNext: 10.31 },
+    { position: { lat: 50.511413, lon: 15.231305 }, timeToReachNext: 14.08 },
+    { position: { lat: 50.512324, lon: 15.227416 }, timeToReachNext: 30 }, // landing
+    { position: { lat: 50.512369, lon: 15.227308 }, timeToReachNext: 9.2 },
+    { position: { lat: 50.511785, lon: 15.22476 }, timeToReachNext: 10.22 },
+    { position: { lat: 50.51023, lon: 15.226509 }, timeToReachNext: 9.35 },
+    { position: { lat: 50.511068, lon: 15.228923 }, timeToReachNext: 8.6 },
+  ],
+  {
+    maxAllowedDistance: 15,
+    captureDuration: 22,
+    isActive: activeAtSunset,
   },
 )
