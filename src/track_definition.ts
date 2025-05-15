@@ -595,3 +595,96 @@ export const VLASICKA = new Track(
     isActive: activeAtMidnight,
   },
 )
+
+export const HREBEN_SLOW = new Track(
+  [
+    // going south
+    { position: { lat: 50.509332, lon: 15.23114 }, timeToReachNext: 13.68 },
+    { position: { lat: 50.509103, lon: 15.231674 }, timeToReachNext: 9.65 },
+    { position: { lat: 50.508898, lon: 15.231994 }, timeToReachNext: 8.63 },
+    { position: { lat: 50.508654, lon: 15.232128 }, timeToReachNext: 8.78 },
+    { position: { lat: 50.508392, lon: 15.232091 }, timeToReachNext: 16.85 },
+    { position: { lat: 50.507899, lon: 15.231922 }, timeToReachNext: 14.36 },
+    { position: { lat: 50.507469, lon: 15.231911 }, timeToReachNext: 17.21 },
+    { position: { lat: 50.506964, lon: 15.232072 }, timeToReachNext: 17.26 },
+    { position: { lat: 50.506488, lon: 15.232388 }, timeToReachNext: 14.55 },
+    { position: { lat: 50.506186, lon: 15.232882 }, timeToReachNext: 1 },
+    // going north
+    { position: { lat: 50.506186, lon: 15.232882 }, timeToReachNext: 14.55 },
+    { position: { lat: 50.506488, lon: 15.232388 }, timeToReachNext: 17.26 },
+    { position: { lat: 50.506964, lon: 15.232072 }, timeToReachNext: 17.21 },
+    { position: { lat: 50.507469, lon: 15.231911 }, timeToReachNext: 14.36 },
+    { position: { lat: 50.507899, lon: 15.231922 }, timeToReachNext: 16.85 },
+    { position: { lat: 50.508392, lon: 15.232091 }, timeToReachNext: 8.78 },
+    { position: { lat: 50.508654, lon: 15.232128 }, timeToReachNext: 8.63 },
+    { position: { lat: 50.508898, lon: 15.231994 }, timeToReachNext: 9.65 },
+    { position: { lat: 50.509103, lon: 15.231674 }, timeToReachNext: 13.68 },
+    { position: { lat: 50.509332, lon: 15.23114 }, timeToReachNext: 1 },
+  ],
+  {
+    maxAllowedDistance: 25,
+    captureDuration: 8 * 60,
+  },
+)
+
+export const HREBEN_FAST = new Track(
+  [
+    // going south
+    { position: { lat: 50.509332, lon: 15.23114 }, timeToReachNext: 11.49 },
+    { position: { lat: 50.509103, lon: 15.231674 }, timeToReachNext: 8.1 },
+    { position: { lat: 50.508898, lon: 15.231994 }, timeToReachNext: 7.25 },
+    { position: { lat: 50.508654, lon: 15.232128 }, timeToReachNext: 7.38 },
+    { position: { lat: 50.508392, lon: 15.232091 }, timeToReachNext: 14.15 },
+    { position: { lat: 50.507899, lon: 15.231922 }, timeToReachNext: 12.06 },
+    { position: { lat: 50.507469, lon: 15.231911 }, timeToReachNext: 14.45 },
+    { position: { lat: 50.506964, lon: 15.232072 }, timeToReachNext: 14.49 },
+    { position: { lat: 50.506488, lon: 15.232388 }, timeToReachNext: 12.23 },
+    { position: { lat: 50.506186, lon: 15.232882 }, timeToReachNext: 1 },
+    // going north
+    { position: { lat: 50.506186, lon: 15.232882 }, timeToReachNext: 12.23 },
+    { position: { lat: 50.506488, lon: 15.232388 }, timeToReachNext: 14.49 },
+    { position: { lat: 50.506964, lon: 15.232072 }, timeToReachNext: 14.45 },
+    { position: { lat: 50.507469, lon: 15.231911 }, timeToReachNext: 12.06 },
+    { position: { lat: 50.507899, lon: 15.231922 }, timeToReachNext: 14.15 },
+    { position: { lat: 50.508392, lon: 15.232091 }, timeToReachNext: 7.38 },
+    { position: { lat: 50.508654, lon: 15.232128 }, timeToReachNext: 7.25 },
+    { position: { lat: 50.508898, lon: 15.231994 }, timeToReachNext: 8.1 },
+    { position: { lat: 50.509103, lon: 15.231674 }, timeToReachNext: 11.49 },
+    { position: { lat: 50.509332, lon: 15.23114 }, timeToReachNext: 1 },
+  ],
+  {
+    maxAllowedDistance: 25,
+    captureDuration: 4 * 60,
+  },
+)
+
+export const HREBEN_FASTEST = new Track(
+  [
+    // going south
+    { position: { lat: 50.509332, lon: 15.23114 }, timeToReachNext: 10.67 },
+    { position: { lat: 50.509103, lon: 15.231674 }, timeToReachNext: 7.52 },
+    { position: { lat: 50.508898, lon: 15.231994 }, timeToReachNext: 6.73 },
+    { position: { lat: 50.508654, lon: 15.232128 }, timeToReachNext: 6.85 },
+    { position: { lat: 50.508392, lon: 15.232091 }, timeToReachNext: 13.14 },
+    { position: { lat: 50.507899, lon: 15.231922 }, timeToReachNext: 11.2 },
+    { position: { lat: 50.507469, lon: 15.231911 }, timeToReachNext: 13.42 },
+    { position: { lat: 50.506964, lon: 15.232072 }, timeToReachNext: 13.46 },
+    { position: { lat: 50.506488, lon: 15.232388 }, timeToReachNext: 11.35 },
+    { position: { lat: 50.506186, lon: 15.232882 }, timeToReachNext: 1 },
+    // going north
+    { position: { lat: 50.506186, lon: 15.232882 }, timeToReachNext: 11.35 },
+    { position: { lat: 50.506488, lon: 15.232388 }, timeToReachNext: 13.46 },
+    { position: { lat: 50.506964, lon: 15.232072 }, timeToReachNext: 13.42 },
+    { position: { lat: 50.507469, lon: 15.231911 }, timeToReachNext: 11.2 },
+    { position: { lat: 50.507899, lon: 15.231922 }, timeToReachNext: 13.14 },
+    { position: { lat: 50.508392, lon: 15.232091 }, timeToReachNext: 6.85 },
+    { position: { lat: 50.508654, lon: 15.232128 }, timeToReachNext: 6.73 },
+    { position: { lat: 50.508898, lon: 15.231994 }, timeToReachNext: 7.52 },
+    { position: { lat: 50.509103, lon: 15.231674 }, timeToReachNext: 10.67 },
+    { position: { lat: 50.509332, lon: 15.23114 }, timeToReachNext: 1 },
+  ],
+  {
+    maxAllowedDistance: 25,
+    captureDuration: 4 * 60,
+  },
+)
