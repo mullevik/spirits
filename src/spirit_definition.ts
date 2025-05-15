@@ -6,6 +6,7 @@ import {
   HAFANG_FASTEST,
   HAFANG_FASTEST_DOUBLE,
   HAFANG_SLOW,
+  JEZEVEC,
   KOZOREL_0,
   KOZOREL_1,
   KRYSAL_0,
@@ -149,5 +150,19 @@ export const SPIRITS: { [key: SpiritId]: Spirit } = {
       { lat: 49.063694, lon: 13.507586 },
     ],
     region: 'sumava',
+  },
+  jezevec: {
+    id: 'jezevec',
+    name: 'Ježevec',
+    kind: 'Vesnické strašidlo',
+    difficulty: 1,
+    tracks: [JEZEVEC],
+    area: [
+      { lat: 50.511723, lon: 15.218588 },
+      { lat: 50.510168, lon: 15.221936 },
+      { lat: 50.511757, lon: 15.226935 },
+      { lat: 50.513401, lon: 15.224221 },
+    ],
+    region: 'pecka',
   },
 }

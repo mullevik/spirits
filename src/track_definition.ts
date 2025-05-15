@@ -554,3 +554,18 @@ export const MLOKOHOUT = new Track(
     isActive: activeInTheMorning,
   },
 )
+
+export const JEZEVEC = new Track(
+  [
+    { position: { lat: 50.511191, lon: 15.220764 }, timeToReachNext: 11.24 },
+    { position: { lat: 50.51105, lon: 15.220957 }, timeToReachNext: 18.64 },
+    { position: { lat: 50.511349, lon: 15.221086 }, timeToReachNext: 9.49 },
+    { position: { lat: 50.51123, lon: 15.221249 }, timeToReachNext: 18.69 },
+  ],
+  {
+    maxAllowedDistance: 15,
+    captureDuration: 2 * 60,
+    isActive: activeAtNight,
+    confirmMessage: 'Jsi skutečně o samotě?',
+  },
+)
