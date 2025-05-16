@@ -739,7 +739,8 @@ export const CHOBOTNICE_0 = new Track(
   {
     maxAllowedDistance: 30,
     captureDuration: 32,
-    confirmMessage: 'Máš připravený půllitr bublinkového nápoje?',
+    confirmMessage:
+      'Máš připravený půllitr bublinkového nápoje? Budeš ho muset vypít rychleji než nabiješ zařízení.',
   },
 )
 
@@ -748,7 +749,7 @@ export const CHOBOTNICE_1 = new Track(
   {
     maxAllowedDistance: 30,
     captureDuration: 1,
-    confirmMessage: 'Zvládl/a jsi to během nabíjení?',
+    confirmMessage: 'Zvládl/a jsi ho vypít během nabíjení?',
   },
 )
 

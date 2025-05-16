@@ -26,14 +26,14 @@
 
   <CapturedDialog :spirit="spirit" :index="captureIndex" :max="spirit.tracks.length" />
 
-  <Dialog v-model:visible="trackConfirmMessageVisible" modal>
+  <Dialog v-model:visible="trackConfirmMessageVisible" :closable="false" modal>
     <p class="text-lg">{{ trackConfirmMessage }}</p>
     <br />
     <div class="flex justify-center gap-2">
       <RouterLink :to="{ name: 'spirit', params: { spiritId: spirit.id } }">
-        <Button type="button" label="Odejít" severity="secondary"></Button>
+        <Button type="button" label="Ne" icon="pi pi-times" severity="secondary"></Button>
       </RouterLink>
-      <Button type="button" label="Potvrzuji" @click="giveTrackConfirmation"></Button>
+      <Button type="button" icon="pi pi-check" label="Ano" @click="giveTrackConfirmation"></Button>
     </div>
   </Dialog>
 </template>
