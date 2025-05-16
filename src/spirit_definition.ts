@@ -43,7 +43,7 @@ export const SPIRITS: { [key: SpiritId]: Spirit } = {
       { lat: 50.0478261, lon: 14.4283883 },
       { lat: 50.0529378, lon: 14.4176597 },
     ],
-    region: 'pecka',
+    region: 'test',
   },
   ecobunny: {
     id: 'ecobunny',
@@ -57,7 +57,7 @@ export const SPIRITS: { [key: SpiritId]: Spirit } = {
       { lat: 50.0591028, lon: 14.43371 },
       { lat: 50.0576014, lon: 14.4300836 },
     ],
-    region: 'pecka',
+    region: 'test',
   },
   kozorel: {
     id: 'kozorel',
