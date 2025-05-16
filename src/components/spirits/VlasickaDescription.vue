@@ -19,7 +19,7 @@
     <br />
     <p>
       Měsíční vílu lze prý spatřit <strong>pouze po půlnoci</strong>. Ráda se prý promenáduje přímo
-      na silnici k hradu Pecka.
+      na silnici k zřícenině hradu Trosky.
     </p>
     <br />
 
