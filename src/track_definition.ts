@@ -781,3 +781,152 @@ export const CHROUSTRAB = new Track(
     isActive: activeAtSunset,
   },
 )
+
+export const VASILIJ = new Track(
+  [{ position: { lat: 50.75096, lon: 15.1208 }, timeToReachNext: 60 }],
+  {
+    maxAllowedDistance: 10,
+    captureDuration: 20,
+  },
+)
+
+export const GENERAL_START = new Track(
+  [{ position: { lat: 50.7517792, lon: 15.1161878 }, timeToReachNext: 60 }],
+  {
+    maxAllowedDistance: 10,
+    captureDuration: 3,
+    confirmMessage:
+      'Potřebujete dělové koule. Posouvejte je pouze přírodními materiály. Zničte s jejich pomocí hradby kunratické pevnosti. Kompas vás navede. Dostali jste dělové koule?',
+  },
+)
+export const GENERAL_END = new Track(
+  [{ position: { lat: 50.7491031, lon: 15.1169197 }, timeToReachNext: 60 }],
+  {
+    maxAllowedDistance: 20,
+    captureDuration: 2,
+    confirmMessage: 'Musíte zničit hradby! Zaútočili jste dělovými koulemi na hradby?',
+  },
+)
+
+export const KING = new Track(
+  [
+    {
+      position: { lat: 50.7421547, lon: 15.1297314 },
+      timeToReachNext: 60,
+    },
+  ],
+  {
+    maxAllowedDistance: 25,
+    captureDuration: 20,
+    confirmMessage: 'Dotýká se tvoje zařízení zvenku alespoň 24. řady cihel od země?',
+  },
+)
+
+export const BOZENA_1 = new Track(
+  [
+    { position: { lat: 50.744884, lon: 15.137503 }, timeToReachNext: 13.47 },
+    { position: { lat: 50.74484, lon: 15.137953 }, timeToReachNext: 8.04 },
+    { position: { lat: 50.74467, lon: 15.137912 }, timeToReachNext: 7.88 },
+    { position: { lat: 50.74453, lon: 15.137764 }, timeToReachNext: 2.49 },
+    { position: { lat: 50.744553, lon: 15.137688 }, timeToReachNext: 8.19 },
+    { position: { lat: 50.744724, lon: 15.137748 }, timeToReachNext: 2.51 },
+    { position: { lat: 50.74476, lon: 15.137685 }, timeToReachNext: 2.16 },
+    { position: { lat: 50.744747, lon: 15.137615 }, timeToReachNext: 8.01 },
+    { position: { lat: 50.744606, lon: 15.137461 }, timeToReachNext: 2.69 },
+    { position: { lat: 50.744614, lon: 15.137371 }, timeToReachNext: 3.14 },
+    { position: { lat: 50.74468, lon: 15.137352 }, timeToReachNext: 9.57 },
+    { position: { lat: 50.744877, lon: 15.13744 }, timeToReachNext: 1.89 },
+  ],
+  {
+    maxAllowedDistance: 15,
+    captureDuration: 60,
+    confirmMessage: 'Pouze slepí mě mohou spatřit. Nese zařízení nevidomý člověk?',
+  },
+)
+
+export const BOZENA_2 = new Track(
+  [
+    { position: { lat: 50.744717, lon: 15.137649 }, timeToReachNext: 4.86 },
+    { position: { lat: 50.74473, lon: 15.137486 }, timeToReachNext: 2.72 },
+    { position: { lat: 50.744713, lon: 15.137398 }, timeToReachNext: 1.79 },
+    { position: { lat: 50.74468, lon: 15.137367 }, timeToReachNext: 1.87 },
+    { position: { lat: 50.74464, lon: 15.137365 }, timeToReachNext: 1.8 },
+    { position: { lat: 50.74461, lon: 15.137403 }, timeToReachNext: 2.58 },
+    { position: { lat: 50.744595, lon: 15.137487 }, timeToReachNext: 2.84 },
+    { position: { lat: 50.744633, lon: 15.137562 }, timeToReachNext: 3.04 },
+    { position: { lat: 50.744698, lon: 15.137566 }, timeToReachNext: 2.91 },
+    { position: { lat: 50.74476, lon: 15.137556 }, timeToReachNext: 3.14 },
+    { position: { lat: 50.744827, lon: 15.13755 }, timeToReachNext: 2.63 },
+    { position: { lat: 50.74488, lon: 15.13758 }, timeToReachNext: 2.91 },
+    { position: { lat: 50.74491, lon: 15.137666 }, timeToReachNext: 2.97 },
+    { position: { lat: 50.744915, lon: 15.137766 }, timeToReachNext: 3.1 },
+    { position: { lat: 50.74489, lon: 15.137863 }, timeToReachNext: 2.75 },
+    { position: { lat: 50.744843, lon: 15.137919 }, timeToReachNext: 3.89 },
+    { position: { lat: 50.74476, lon: 15.137929 }, timeToReachNext: 3.09 },
+    { position: { lat: 50.744694, lon: 15.13793 }, timeToReachNext: 2.04 },
+    { position: { lat: 50.744656, lon: 15.137896 }, timeToReachNext: 2.91 },
+    { position: { lat: 50.744602, lon: 15.137847 }, timeToReachNext: 1.6 },
+    { position: { lat: 50.744568, lon: 15.13784 }, timeToReachNext: 1.82 },
+    { position: { lat: 50.744534, lon: 15.13781 }, timeToReachNext: 3.35 },
+    { position: { lat: 50.744537, lon: 15.137697 }, timeToReachNext: 2.49 },
+    { position: { lat: 50.744587, lon: 15.137668 }, timeToReachNext: 3.36 },
+    { position: { lat: 50.744656, lon: 15.1377 }, timeToReachNext: 2.16 },
+    { position: { lat: 50.7447, lon: 15.137678 }, timeToReachNext: 1.17 },
+  ],
+  {
+    maxAllowedDistance: 15,
+    captureDuration: 60,
+    confirmMessage: 'Pouze slepí mě mohou spatřit. Nese zařízení nevidomý člověk?',
+  },
+)
+
+export const BOZENA_3 = new Track(
+  [
+    { position: { lat: 50.744522, lon: 15.137811 }, timeToReachNext: 1.89 },
+    { position: { lat: 50.744537, lon: 15.137879 }, timeToReachNext: 2.02 },
+    { position: { lat: 50.74458, lon: 15.137915 }, timeToReachNext: 2.09 },
+    { position: { lat: 50.74463, lon: 15.137926 }, timeToReachNext: 2.25 },
+    { position: { lat: 50.744682, lon: 15.137901 }, timeToReachNext: 2.06 },
+    { position: { lat: 50.74471, lon: 15.137836 }, timeToReachNext: 1.65 },
+    { position: { lat: 50.744724, lon: 15.137777 }, timeToReachNext: 1.7 },
+    { position: { lat: 50.74473, lon: 15.137713 }, timeToReachNext: 1.7 },
+    { position: { lat: 50.744736, lon: 15.137649 }, timeToReachNext: 1.71 },
+    { position: { lat: 50.744728, lon: 15.137585 }, timeToReachNext: 1.93 },
+    { position: { lat: 50.7447, lon: 15.137526 }, timeToReachNext: 1.63 },
+    { position: { lat: 50.74471, lon: 15.137466 }, timeToReachNext: 1.82 },
+    { position: { lat: 50.744743, lon: 15.13742 }, timeToReachNext: 2.37 },
+    { position: { lat: 50.7448, lon: 15.137413 }, timeToReachNext: 2.52 },
+    { position: { lat: 50.744854, lon: 15.137457 }, timeToReachNext: 2.06 },
+    { position: { lat: 50.74486, lon: 15.137535 }, timeToReachNext: 2.73 },
+    { position: { lat: 50.74486, lon: 15.137639 }, timeToReachNext: 2.17 },
+    { position: { lat: 50.74486, lon: 15.137722 }, timeToReachNext: 1.92 },
+    { position: { lat: 50.744843, lon: 15.13779 }, timeToReachNext: 1.91 },
+    { position: { lat: 50.744797, lon: 15.137787 }, timeToReachNext: 1.6 },
+    { position: { lat: 50.744762, lon: 15.137761 }, timeToReachNext: 1.77 },
+    { position: { lat: 50.744728, lon: 15.13772 }, timeToReachNext: 1.95 },
+    { position: { lat: 50.744705, lon: 15.137655 }, timeToReachNext: 1.23 },
+    { position: { lat: 50.744686, lon: 15.137619 }, timeToReachNext: 1.82 },
+    { position: { lat: 50.744663, lon: 15.13756 }, timeToReachNext: 1.47 },
+    { position: { lat: 50.744648, lon: 15.137509 }, timeToReachNext: 1.79 },
+    { position: { lat: 50.744606, lon: 15.137493 }, timeToReachNext: 1.69 },
+    { position: { lat: 50.744568, lon: 15.137516 }, timeToReachNext: 1.84 },
+    { position: { lat: 50.744553, lon: 15.137582 }, timeToReachNext: 2.28 },
+    { position: { lat: 50.74453, lon: 15.137661 }, timeToReachNext: 1.91 },
+    { position: { lat: 50.74452, lon: 15.137732 }, timeToReachNext: 2.07 },
+  ],
+  {
+    maxAllowedDistance: 15,
+    captureDuration: 40,
+    confirmMessage: 'Pouze slepí mě mohou spatřit. Nese zařízení nevidomý člověk?',
+  },
+)
+
+export const ZOMBIE = new Track(
+  [{ position: { lat: 50.7460719, lon: 15.1435531 }, timeToReachNext: 60 }],
+  {
+    maxAllowedDistance: 15,
+    captureDuration: 10,
+    confirmMessage:
+      'Pozor, toto monstrum vás chce sežrat! Všichni vylezte někam nahoru - třeba na tu prolézačku. Jste všichni na prolézačce?',
+  },
+)
