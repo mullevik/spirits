@@ -1,15 +1,21 @@
 <template>
   <div v-if="isCaptured">
     <p>Vasilij jásá. Tak přece jen to jde.</p>
-    <p>Za odměnu nabízí panáka vodky tomu nejodvážnějšímu z vás.</p>
+
+    <br />
+    <p>Za odměnu nabízí panáka vodky všem odvážlivcům, kteří se nebáli vstoupit na led.</p>
   </div>
   <div v-else>
     <p>Legenda vypráví o duchovi na lukášovském rybníku.</p>
+    <br />
     <p>
-      Vasilij Smirnov - kapitán ruské armády - se snažil demonstrovat pevnost ledu jeho pěchotě při
-      vojenském tažení přes Lukášov.
+      Kapitán ruské armády se tu snažil demonstrovat pevnost ledu jeho pěchotě při vojenském tažení
+      přes Lukášov.
     </p>
+    <br />
+
     <p>Demonstrace však nedopadla příliš přesvědčivě.</p>
+    <br />
 
     <p>Abyste Vasilijova ducha spatřili, musíte předvést lepší výkon.</p>
   </div>

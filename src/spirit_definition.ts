@@ -289,7 +289,7 @@ export const SPIRITS: { [key: SpiritId]: Spirit } = {
   king: {
     id: 'king',
     name: 'Král Stěny',
-    kind: 'Královská legenda',
+    kind: 'Legenda ve věži',
     difficulty: 2,
     tracks: [KING],
     area: [

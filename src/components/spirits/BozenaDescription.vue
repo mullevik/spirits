@@ -1,9 +1,10 @@
 <template>
   <div v-if="isCaptured">
     <p>Boženka je plachá víla která nesnese pohled cizích lidí.</p>
+    <br />
     <p>
-      Jako trest za okukování donutí ty z vás, kdo měli při jejím lovení otevřené oči po celou dobu,
-      vypít panáka tekutiny, která může způsobit, že o svůj zrak klidně přijdete.
+      Ty z vás, co měli oči otevřené po celou dobu lovení, Boženka trestá jejím likérem. S trochou
+      štěstí po něm přijdete o zrak a už ji nikdy okukovat nebudete!
     </p>
   </div>
   <div v-else>
@@ -11,6 +12,7 @@
       V Rýnovicích se vyprávejí báchorky o nesmělé víle, která už nechtěně vylekala nejednoho
       důchodce.
     </p>
+    <br />
 
     <p>
       Zajímavé je, že o ní mluví pouze lidé s velmi špatným zrakem. Povídá se, že se víla zjeví jen
